@@ -1,0 +1,96 @@
+import { SiteNav } from "@/components/SiteNav";
+import { SiteFooter } from "@/components/SiteFooter";
+import { PageViewTracker } from "@/components/PageViewTracker";
+import { GetProLink } from "@/components/GetProLink";
+import {
+  ClientsLaptop,
+  HeroDevices,
+  RecordDocsPhone,
+  ReportsLaptop,
+} from "@/components/ProductShowcase";
+import {
+  ClosingCta,
+  Faq,
+  HowItWorks,
+  MoreFeatures,
+  Pricing,
+  PRIMARY_BUTTON,
+  Showcase,
+} from "@/components/ProSections";
+
+export default function DoulioProPage() {
+  return (
+    <>
+      <PageViewTracker />
+      <SiteNav />
+      <main className="overflow-hidden bg-white">
+        {/* Hero */}
+        <section className="px-4 pb-24 pt-14 text-center sm:px-6 sm:pb-32 sm:pt-24">
+          <p className="font-display text-lg font-semibold text-teal-dark sm:text-xl">Doulio PRO</p>
+          <h1 className="mx-auto mt-4 max-w-5xl text-balance font-display text-5xl font-semibold leading-[1.02] tracking-tight text-slate-900 sm:text-7xl lg:text-8xl">
+            Your practice.
+            <br />
+            <span className="bg-gradient-to-r from-teal-dark to-teal bg-clip-text text-transparent">
+              All in one place.
+            </span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-balance text-xl text-slate-500 sm:text-2xl">
+            Clients, DOCS, resources and reports, in a workspace made for independent doulas.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
+            <GetProLink location="hero" className={PRIMARY_BUTTON}>
+              Get Doulio PRO
+            </GetProLink>
+            <a
+              href="#pricing"
+              className="text-lg font-medium text-teal-dark hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark"
+            >
+              From $32.50/mo billed yearly ›
+            </a>
+          </div>
+          <div className="mt-16 sm:mt-20">
+            <HeroDevices />
+          </div>
+        </section>
+
+        <Showcase
+          id="clients"
+          eyebrow="Clients"
+          title="Every client. Every detail."
+          body="Due dates, services, notes and DOCS progress, together for each family, so you always know who needs you next."
+          tone="gray"
+        >
+          <ClientsLaptop />
+        </Showcase>
+
+        <Showcase
+          id="docs"
+          eyebrow="DOCS"
+          title="Record DOCS in a couple of taps."
+          body="Build your own intake and visit forms. Then record one for a client straight from your Clients list, on your laptop or your phone."
+          tone="white"
+          layout="split"
+        >
+          <RecordDocsPhone />
+        </Showcase>
+
+        <Showcase
+          id="reports"
+          eyebrow="Reports"
+          title="See the difference you make."
+          body="Clients served, births and outcomes over any period, with a PDF summary ready to share."
+          tone="gray"
+        >
+          <ReportsLaptop />
+        </Showcase>
+
+        <MoreFeatures />
+        <HowItWorks />
+        <Pricing />
+        <Faq />
+        <ClosingCta />
+      </main>
+      <SiteFooter />
+    </>
+  );
+}

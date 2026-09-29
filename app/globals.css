@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-white font-sans text-slate-900 antialiased;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-display;
+}
+
+/* Slider: mint track with a dark-teal fill up to the current value (--fill). */
+.range-field {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1.5rem;
+  background: transparent;
+  cursor: pointer;
+}
+.range-field::-webkit-slider-runnable-track {
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #178488 var(--fill), #c2eee4 var(--fill));
+}
+.range-field::-moz-range-track {
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #178488 var(--fill), #c2eee4 var(--fill));
+}
+.range-field::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -0.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 9999px;
+  border: 3px solid #178488;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.2);
+  transition: transform 150ms ease;
+}
+.range-field::-moz-range-thumb {
+  height: 1.125rem;
+  width: 1.125rem;
+  border-radius: 9999px;
+  border: 3px solid #178488;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.2);
+}
+.range-field:active::-webkit-slider-thumb {
+  transform: scale(1.1);
+}
+.range-field:focus {
+  outline: none;
+}
+.range-field:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px #ffffff, 0 0 0 6px #178488;
+}
+.range-field:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 4px #ffffff, 0 0 0 6px #178488;
+}
+
+/* Restrained fade when a result value changes. */
+@keyframes value-fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.value-fade {
+  animation: value-fade 220ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .value-fade {
+    animation: none;
+  }
+  .range-field::-webkit-slider-thumb {
+    transition: none;
+  }
+}
