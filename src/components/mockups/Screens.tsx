@@ -272,3 +272,94 @@ export function DashboardPhoneScreen() {
     </div>
   );
 }
+
+const CLAIMS = [
+  { client: "Olivia Martin", service: "Birth support", amount: "$1,200.00", status: "Paid" },
+  { client: "Aaliyah Turner", service: "Prenatal visit", amount: "$150.00", status: "Paid" },
+  { client: "Maya Robinson", service: "Prenatal visit", amount: "$150.00", status: "Submitted" },
+  { client: "Sofia Hernández", service: "Postpartum visit", amount: "$150.00", status: "Submitted" },
+  { client: "Grace Kim", service: "Prenatal visit", amount: "$150.00", status: "Draft" },
+];
+
+function ClaimStatus({ status }: { status: string }) {
+  const styles: Record<string, string> = {
+    Paid: "bg-[#e3f5ec] text-[#1f7a4d]",
+    Submitted: "bg-[#e6f2f2] text-[#178488]",
+    Draft: "bg-[#eef0f4] text-[#4b5563]",
+  };
+  return (
+    <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${styles[status]}`}>
+      {status}
+    </span>
+  );
+}
+
+/** Insurance: an eligibility check and claims with their payment status */
+export function ClaimsScreen() {
+  return (
+    <AppShell active="Claims">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold">Claims</h1>
+          <p className="mt-1 text-sm text-[#6b8283]">Submitted to insurance, tracked to payment.</p>
+        </div>
+        <span className="rounded-full bg-[#178488] px-4 py-2 text-sm font-semibold text-white">
+          + New Claim
+        </span>
+      </div>
+      <div className="mt-6 grid grid-cols-3 gap-4">
+        <Card className="col-span-1">
+          <p className="text-xs font-medium uppercase tracking-wide text-[#6b8283]">
+            Eligibility check
+          </p>
+          <p className="mt-3 font-semibold">Grace Kim</p>
+          <div className="mt-3 flex items-center gap-2">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#e3f5ec] text-sm text-[#1f7a4d]">
+              ✓
+            </span>
+            <span className="font-semibold text-[#1f7a4d]">Eligible</span>
+          </div>
+          <p className="mt-2 text-sm text-[#6b8283]">Medicaid · Active coverage</p>
+          <p className="text-sm text-[#6b8283]">Checked just now</p>
+        </Card>
+        <Card className="col-span-2">
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              ["Reimbursed this year", "$8,450"],
+              ["Awaiting payment", "$300"],
+              ["Claims submitted", "46"],
+            ].map(([label, value]) => (
+              <div key={label}>
+                <p className="text-xs font-medium uppercase tracking-wide text-[#6b8283]">
+                  {label}
+                </p>
+                <p className="mt-2 text-3xl font-semibold text-[#178488]">{value}</p>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </div>
+      <Card className="mt-4 p-0">
+        <div className="grid grid-cols-[2fr_1.6fr_1fr_1fr] gap-4 border-b border-[#edf2f2] px-5 py-3 text-xs font-semibold uppercase tracking-wide text-[#6b8283]">
+          <span>Client</span>
+          <span>Service</span>
+          <span>Amount</span>
+          <span>Status</span>
+        </div>
+        {CLAIMS.map((c) => (
+          <div
+            key={c.client + c.service}
+            className="grid grid-cols-[2fr_1.6fr_1fr_1fr] items-center gap-4 border-b border-[#edf2f2] px-5 py-3.5 text-sm last:border-0"
+          >
+            <span className="font-medium">{c.client}</span>
+            <span className="text-[#4a5f60]">{c.service}</span>
+            <span className="text-[#4a5f60]">{c.amount}</span>
+            <span>
+              <ClaimStatus status={c.status} />
+            </span>
+          </div>
+        ))}
+      </Card>
+    </AppShell>
+  );
+}

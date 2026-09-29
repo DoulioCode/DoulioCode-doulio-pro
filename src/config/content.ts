@@ -39,7 +39,7 @@ export const FAQS: Array<{ question: string; answer: string }> = [
   {
     question: "What is Doulio PRO?",
     answer:
-      "Doulio PRO gives an independent doula her own workspace, My Practice, for running her practice: clients, DOCS, resources and reports.",
+      "Doulio PRO gives an independent doula her own workspace, My Practice, for running her practice: clients, DOCS, insurance claims, resources and reports.",
   },
   {
     question: "Is PRO a certification?",
@@ -54,6 +54,11 @@ export const FAQS: Array<{ question: string; answer: string }> = [
     question: "I already work with an organization on Doulio. Can I still get PRO?",
     answer:
       "Yes. My Practice sits alongside your organizations, and you switch between them from the top of the app. Your organization work stays with the organization.",
+  },
+  {
+    question: "Can I bill insurance?",
+    answer:
+      "Yes. Check a client's eligibility, submit claims and get reimbursed, all from My Practice. We turn insurance billing on for your practice once your billing details (NPI, tax ID and payer enrollment) are in place.",
   },
   {
     question: "Can I cancel?",

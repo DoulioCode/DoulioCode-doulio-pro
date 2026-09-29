@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 /** The My Practice app shell (sidebar and header), as in the real app. */
-const NAV = ["Dashboard", "Clients", "DOCS", "Resources", "Reports", "Messages", "Settings"];
+const NAV = ["Dashboard", "Clients", "DOCS", "Claims", "Resources", "Reports", "Settings"];
 
 export function AppShell({ active, children }: { active: string; children: ReactNode }) {
   return (

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Laptop, Phone } from "@/components/mockups/Devices";
 import { ScaledScreen } from "@/components/mockups/ScaledScreen";
 import {
+  ClaimsScreen,
   ClientsScreen,
   DashboardPhoneScreen,
   DashboardScreen,
@@ -48,6 +49,14 @@ export function ClientsLaptop() {
   return (
     <LaptopScreen label="The Clients list in My Practice, with due dates, services, DOCS progress and status">
       <ClientsScreen />
+    </LaptopScreen>
+  );
+}
+
+export function ClaimsLaptop() {
+  return (
+    <LaptopScreen label="Insurance in My Practice: an eligibility check showing active Medicaid coverage, amounts reimbursed and claims with their payment status">
+      <ClaimsScreen />
     </LaptopScreen>
   );
 }

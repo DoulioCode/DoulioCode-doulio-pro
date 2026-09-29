@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { PageViewTracker } from "@/components/PageViewTracker";
 import { GetProLink } from "@/components/GetProLink";
 import {
+  ClaimsLaptop,
   ClientsLaptop,
   HeroDevices,
   RecordDocsPhone,
@@ -35,7 +36,8 @@ export default function DoulioProPage() {
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-xl text-slate-500 sm:text-2xl">
-            Clients, DOCS, resources and reports, in a workspace made for independent doulas.
+            Clients, DOCS, insurance claims and reports, in a workspace made for independent
+            doulas.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
             <GetProLink location="hero" className={PRIMARY_BUTTON}>
@@ -75,11 +77,21 @@ export default function DoulioProPage() {
         </Showcase>
 
         <Showcase
+          id="insurance"
+          eyebrow="Insurance"
+          title="Check eligibility. Submit claims. Get reimbursed."
+          body="See a client's coverage in seconds, send claims to insurance from Doulio, and track every one until it's paid."
+          tone="gray"
+        >
+          <ClaimsLaptop />
+        </Showcase>
+
+        <Showcase
           id="reports"
           eyebrow="Reports"
           title="See the difference you make."
           body="Clients served, births and outcomes over any period, with a PDF summary ready to share."
-          tone="gray"
+          tone="white"
         >
           <ReportsLaptop />
         </Showcase>
