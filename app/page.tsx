@@ -2,6 +2,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageViewTracker } from "@/components/PageViewTracker";
 import { GetProLink } from "@/components/GetProLink";
+import { TRUST_POINTS } from "@/config/content";
 import {
   ClaimsLaptop,
   ClientsLaptop,
@@ -20,6 +21,13 @@ import {
   Showcase,
 } from "@/components/ProSections";
 
+const TRUST_DOTS = [
+  "bg-pro-violet",
+  "bg-pro-pink",
+  "bg-pro-sky",
+  "bg-pro-orange",
+];
+
 export default function DoulioProPage() {
   return (
     <>
@@ -37,8 +45,8 @@ export default function DoulioProPage() {
             <span className={GRADIENT_TEXT}>All in one place.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-xl text-slate-500 sm:text-2xl">
-            Clients, DOCS, insurance claims and reports, in a workspace made for
-            independent doulas.
+            Clients, DOCS, insurance claims, payments and reports, in a
+            workspace made for independent doulas.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
             <GetProLink location="hero" className={PRIMARY_BUTTON}>
@@ -51,6 +59,20 @@ export default function DoulioProPage() {
               From $32.50/mo billed yearly ›
             </a>
           </div>
+          <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2.5">
+            {TRUST_POINTS.map((point, index) => (
+              <li
+                key={point}
+                className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 sm:text-base"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`h-2 w-2 rounded-full ${TRUST_DOTS[index % TRUST_DOTS.length]}`}
+                />
+                {point}
+              </li>
+            ))}
+          </ul>
           <div className="mt-16 sm:mt-20">
             <HeroDevices />
           </div>
