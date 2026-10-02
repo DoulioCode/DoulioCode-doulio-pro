@@ -8,7 +8,7 @@ export function AppShell({ active, children }: { active: string; children: React
     <div className="flex h-full w-full bg-[#f6f9f9] text-[#2a3b3c]">
       <aside className="flex w-56 shrink-0 flex-col border-r border-[#dce6e6] bg-white px-4 py-5">
         <div className="mb-6 flex items-center gap-2 px-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#178488] text-sm font-bold text-white">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#eb2d93] text-sm font-bold text-white">
             JD
           </span>
           <div className="leading-tight">
@@ -21,14 +21,14 @@ export function AppShell({ active, children }: { active: string; children: React
             <div
               key={item}
               className={`rounded-lg px-3 py-2 text-sm ${
-                item === active ? "bg-[#e6f2f2] font-semibold text-[#178488]" : "text-[#4a5f60]"
+                item === active ? "bg-[#fde2f1] font-semibold text-[#eb2d93]" : "text-[#4a5f60]"
               }`}
             >
               {item}
             </div>
           ))}
         </nav>
-        <div className="mt-auto rounded-xl bg-gradient-to-br from-[#178488] to-[#1fa3a8] p-3 text-xs text-white">
+        <div className="mt-auto rounded-xl bg-gradient-to-br from-[#eb2d93] to-[#824dff] p-3 text-xs text-white">
           <p className="font-semibold">Doulio PRO</p>
           <p className="opacity-80">Active</p>
         </div>
@@ -37,7 +37,7 @@ export function AppShell({ active, children }: { active: string; children: React
         <header className="flex h-14 items-center justify-between border-b border-[#dce6e6] bg-white px-8">
           <p className="text-sm text-[#6b8283]">{active}</p>
           <div className="flex items-center gap-3">
-            <span className="h-8 w-8 rounded-full bg-[#e6f2f2]" />
+            <span className="h-8 w-8 rounded-full bg-[#fde2f1]" />
             <span className="h-8 w-8 rounded-full bg-[#f0c2ad]" />
           </div>
         </header>

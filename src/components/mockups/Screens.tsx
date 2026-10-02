@@ -16,7 +16,7 @@ const CLIENTS = [
 
 function StatusPill({ status }: { status: string }) {
   const styles: Record<string, string> = {
-    Active: "bg-[#e6f2f2] text-[#178488]",
+    Active: "bg-[#fde2f1] text-[#eb2d93]",
     New: "bg-[#fdf1e6] text-[#b86a1f]",
     Delivered: "bg-[#eef0f4] text-[#4b5563]",
   };
@@ -41,7 +41,7 @@ export function DashboardScreen() {
         ].map(([label, value]) => (
           <Card key={label}>
             <p className="text-xs font-medium uppercase tracking-wide text-[#6b8283]">{label}</p>
-            <p className="mt-2 text-3xl font-semibold text-[#178488]">{value}</p>
+            <p className="mt-2 text-3xl font-semibold text-[#eb2d93]">{value}</p>
           </Card>
         ))}
       </div>
@@ -52,7 +52,7 @@ export function DashboardScreen() {
             {CLIENTS.slice(0, 4).map((c) => (
               <div key={c.name} className="flex items-center justify-between py-2.5 text-sm">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e6f2f2] text-xs font-semibold text-[#178488]">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#fde2f1] text-xs font-semibold text-[#eb2d93]">
                     {c.name.split(" ").map((p) => p[0]).join("")}
                   </span>
                   <span className="font-medium">{c.name}</span>
@@ -90,7 +90,7 @@ export function ClientsScreen() {
           <h1 className="text-2xl font-semibold">Clients</h1>
           <p className="mt-1 text-sm text-[#6b8283]">12 active · 3 due in the next 30 days</p>
         </div>
-        <span className="rounded-full bg-[#178488] px-4 py-2 text-sm font-semibold text-white">
+        <span className="rounded-full bg-[#eb2d93] px-4 py-2 text-sm font-semibold text-white">
           + Add Client
         </span>
       </div>
@@ -109,7 +109,7 @@ export function ClientsScreen() {
             className="grid grid-cols-[2fr_1fr_1.4fr_1fr_1fr_0.6fr] items-center gap-4 border-b border-[#edf2f2] px-5 py-3.5 text-sm last:border-0"
           >
             <span className="flex items-center gap-3 font-medium">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e6f2f2] text-xs font-semibold text-[#178488]">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#fde2f1] text-xs font-semibold text-[#eb2d93]">
                 {c.name.split(" ").map((p) => p[0]).join("")}
               </span>
               {c.name}
@@ -120,7 +120,7 @@ export function ClientsScreen() {
             <span>
               <StatusPill status={c.status} />
             </span>
-            <span className="flex h-7 w-7 items-center justify-center rounded-full border border-[#dce6e6] text-[#178488]">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full border border-[#dce6e6] text-[#eb2d93]">
               +
             </span>
           </div>
@@ -148,7 +148,7 @@ export function ReportsScreen() {
           <h1 className="text-2xl font-semibold">Reports</h1>
           <p className="mt-1 text-sm text-[#6b8283]">Totals and rates for your practice.</p>
         </div>
-        <span className="rounded-full border border-[#dce6e6] bg-white px-4 py-2 text-sm font-semibold text-[#178488]">
+        <span className="rounded-full border border-[#dce6e6] bg-white px-4 py-2 text-sm font-semibold text-[#eb2d93]">
           Download PDF
         </span>
       </div>
@@ -160,7 +160,7 @@ export function ReportsScreen() {
         ].map(([label, value]) => (
           <Card key={label}>
             <p className="text-xs font-medium uppercase tracking-wide text-[#6b8283]">{label}</p>
-            <p className="mt-2 text-3xl font-semibold text-[#178488]">{value}</p>
+            <p className="mt-2 text-3xl font-semibold text-[#eb2d93]">{value}</p>
           </Card>
         ))}
       </div>
@@ -171,7 +171,7 @@ export function ReportsScreen() {
             <div key={month} className="flex flex-1 flex-col items-center gap-2">
               <span className="text-xs font-semibold text-[#4a5f60]">{value}</span>
               <div
-                className="w-full rounded-t-lg bg-gradient-to-t from-[#178488] to-[#4cb2a6]"
+                className="w-full rounded-t-lg bg-gradient-to-t from-[#eb2d93] to-[#824dff]"
                 style={{ height: `${(value / max) * 200}px` }}
               />
               <span className="text-xs text-[#6b8283]">{month}</span>
@@ -187,7 +187,7 @@ export function ReportsScreen() {
 export function RecordDocsPhoneScreen() {
   return (
     <div className="flex h-full w-full flex-col bg-[#f6f9f9] px-5 pb-6 pt-14 text-[#2a3b3c]">
-      <p className="text-xs font-semibold uppercase tracking-wide text-[#178488]">My Practice</p>
+      <p className="text-xs font-semibold uppercase tracking-wide text-[#eb2d93]">My Practice</p>
       <h1 className="mt-1 text-2xl font-semibold">DOCS for Maya</h1>
       <p className="mt-1 text-sm text-[#6b8283]">Record a new entry, or continue a draft.</p>
       <div className="mt-5 space-y-3">
@@ -208,8 +208,8 @@ export function RecordDocsPhoneScreen() {
             <span
               className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
                 action === "+ Record"
-                  ? "bg-[#178488] text-white"
-                  : "border border-[#dce6e6] text-[#178488]"
+                  ? "bg-[#eb2d93] text-white"
+                  : "border border-[#dce6e6] text-[#eb2d93]"
               }`}
             >
               {action}
@@ -218,7 +218,7 @@ export function RecordDocsPhoneScreen() {
         ))}
       </div>
       <div className="mt-auto rounded-2xl bg-white p-4 text-center text-sm shadow-sm">
-        <span className="font-semibold text-[#178488]">Recorded</span>
+        <span className="font-semibold text-[#eb2d93]">Recorded</span>
         <span className="text-[#6b8283]"> · Prenatal visit, just now</span>
       </div>
     </div>
@@ -229,7 +229,7 @@ export function RecordDocsPhoneScreen() {
 export function DashboardPhoneScreen() {
   return (
     <div className="flex h-full w-full flex-col bg-[#f6f9f9] px-5 pb-6 pt-14 text-[#2a3b3c]">
-      <p className="text-xs font-semibold uppercase tracking-wide text-[#178488]">My Practice</p>
+      <p className="text-xs font-semibold uppercase tracking-wide text-[#eb2d93]">My Practice</p>
       <h1 className="mt-1 text-2xl font-semibold">Good morning, Jane</h1>
       <div className="mt-5 grid grid-cols-2 gap-3">
         {[
@@ -240,7 +240,7 @@ export function DashboardPhoneScreen() {
             <p className="text-[11px] font-medium uppercase tracking-wide text-[#6b8283]">
               {label}
             </p>
-            <p className="mt-1 text-3xl font-semibold text-[#178488]">{value}</p>
+            <p className="mt-1 text-3xl font-semibold text-[#eb2d93]">{value}</p>
           </div>
         ))}
       </div>
@@ -284,7 +284,7 @@ const CLAIMS = [
 function ClaimStatus({ status }: { status: string }) {
   const styles: Record<string, string> = {
     Paid: "bg-[#e3f5ec] text-[#1f7a4d]",
-    Submitted: "bg-[#e6f2f2] text-[#178488]",
+    Submitted: "bg-[#fde2f1] text-[#eb2d93]",
     Draft: "bg-[#eef0f4] text-[#4b5563]",
   };
   return (
@@ -303,7 +303,7 @@ export function ClaimsScreen() {
           <h1 className="text-2xl font-semibold">Claims</h1>
           <p className="mt-1 text-sm text-[#6b8283]">Submitted to insurance, tracked to payment.</p>
         </div>
-        <span className="rounded-full bg-[#178488] px-4 py-2 text-sm font-semibold text-white">
+        <span className="rounded-full bg-[#eb2d93] px-4 py-2 text-sm font-semibold text-white">
           + New Claim
         </span>
       </div>
@@ -333,7 +333,7 @@ export function ClaimsScreen() {
                 <p className="text-xs font-medium uppercase tracking-wide text-[#6b8283]">
                   {label}
                 </p>
-                <p className="mt-2 text-3xl font-semibold text-[#178488]">{value}</p>
+                <p className="mt-2 text-3xl font-semibold text-[#eb2d93]">{value}</p>
               </div>
             ))}
           </div>
