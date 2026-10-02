@@ -7,13 +7,17 @@ import { trackEvent } from "@/lib/analytics";
 import { GetProLink } from "@/components/GetProLink";
 
 export const PRIMARY_BUTTON =
-  "inline-block rounded-full bg-teal-dark px-8 py-3.5 text-center text-lg font-medium text-white transition hover:bg-[#136f72] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark focus-visible:ring-offset-2";
+  "inline-block rounded-full bg-gradient-to-r from-pro-pink to-pro-violet px-8 py-3.5 text-center text-lg font-semibold text-white shadow-lg shadow-pro-pink/25 transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink focus-visible:ring-offset-2";
 export const SECONDARY_BUTTON =
-  "inline-block rounded-full border border-teal-dark px-8 py-3.5 text-center text-lg font-medium text-teal-dark transition hover:bg-mint/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark focus-visible:ring-offset-2";
+  "inline-block rounded-full border border-pro-pink px-8 py-3.5 text-center text-lg font-medium text-pro-pink transition hover:bg-pro-pink-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink focus-visible:ring-offset-2";
+
+/** Teal-to-violet-to-pink, the same headline gradient as the Doulio PRO page in the app. */
+export const GRADIENT_TEXT =
+  "bg-gradient-to-r from-teal-dark via-pro-violet to-pro-pink bg-clip-text text-transparent";
 
 const HEADING =
   "text-balance font-display text-4xl font-semibold tracking-tight text-slate-900 sm:text-6xl";
-const EYEBROW = "font-display text-lg font-semibold text-teal-dark";
+const EYEBROW = "font-display text-lg font-semibold text-pro-pink";
 const LEAD = "text-balance text-xl text-slate-500 sm:text-2xl";
 
 /** One idea per section, Apple-style: big headline, one line of copy, one product visual. */
@@ -64,16 +68,31 @@ export function Showcase({
   );
 }
 
+const FEATURE_TINTS = [
+  "bg-pro-pink-soft",
+  "bg-pro-violet-soft",
+  "bg-pro-sky-soft",
+];
+
 export function MoreFeatures() {
   return (
-    <section aria-labelledby="more-heading" className="bg-white px-4 py-24 sm:px-6 sm:py-32">
+    <section
+      aria-labelledby="more-heading"
+      className="bg-white px-4 py-24 sm:px-6 sm:py-32"
+    >
       <div className="mx-auto max-w-6xl">
-        <h2 id="more-heading" className={`mx-auto max-w-3xl text-center ${HEADING}`}>
+        <h2
+          id="more-heading"
+          className={`mx-auto max-w-3xl text-center ${HEADING}`}
+        >
           And everything else you need.
         </h2>
         <ul className="mt-14 grid gap-5 md:grid-cols-3">
-          {MORE_FEATURES.map((feature) => (
-            <li key={feature.title} className="rounded-3xl bg-[#f5f7f7] p-8">
+          {MORE_FEATURES.map((feature, index) => (
+            <li
+              key={feature.title}
+              className={`rounded-3xl p-8 ${FEATURE_TINTS[index % FEATURE_TINTS.length]}`}
+            >
               <h3 className="font-display text-2xl font-semibold tracking-tight text-slate-900">
                 {feature.title}
               </h3>
@@ -86,6 +105,8 @@ export function MoreFeatures() {
   );
 }
 
+const STEP_COLORS = ["text-pro-pink", "text-pro-violet", "text-pro-sky"];
+
 export function HowItWorks() {
   return (
     <section
@@ -94,13 +115,20 @@ export function HowItWorks() {
       className="scroll-mt-24 bg-[#f5f7f7] px-4 py-24 sm:px-6 sm:py-32"
     >
       <div className="mx-auto max-w-6xl">
-        <h2 id="how-heading" className={`mx-auto max-w-3xl text-center ${HEADING}`}>
+        <h2
+          id="how-heading"
+          className={`mx-auto max-w-3xl text-center ${HEADING}`}
+        >
           Up and running in minutes.
         </h2>
         <ol className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
           {STEPS.map((step, index) => (
             <li key={step.title} className="text-center md:text-left">
-              <span className="font-display text-5xl font-semibold text-teal">{index + 1}</span>
+              <span
+                className={`font-display text-5xl font-semibold ${STEP_COLORS[index % STEP_COLORS.length]}`}
+              >
+                {index + 1}
+              </span>
               <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight text-slate-900">
                 {step.title}
               </h3>
@@ -139,7 +167,7 @@ export function Pricing() {
             >
               <p
                 className={`font-display text-lg font-semibold ${
-                  plan.plan === "yearly" ? "text-mint" : "text-teal-dark"
+                  plan.plan === "yearly" ? "text-pink-300" : "text-pro-pink"
                 }`}
               >
                 {plan.name}
@@ -148,11 +176,17 @@ export function Pricing() {
                 <span className="font-display text-6xl font-semibold tracking-tight">
                   {plan.price}
                 </span>{" "}
-                <span className={plan.plan === "yearly" ? "text-slate-300" : "text-slate-500"}>
+                <span
+                  className={
+                    plan.plan === "yearly" ? "text-slate-300" : "text-slate-500"
+                  }
+                >
                   {plan.period}
                 </span>
               </p>
-              <p className={`mt-3 ${plan.plan === "yearly" ? "text-slate-300" : "text-slate-500"}`}>
+              <p
+                className={`mt-3 ${plan.plan === "yearly" ? "text-slate-300" : "text-slate-500"}`}
+              >
                 {plan.note}
               </p>
               <GetProLink
@@ -160,7 +194,7 @@ export function Pricing() {
                 plan={plan.plan}
                 className={`mt-8 ${
                   plan.plan === "yearly"
-                    ? "inline-block rounded-full bg-white px-8 py-3.5 text-center text-lg font-medium text-slate-900 transition hover:bg-mint focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+                    ? "inline-block rounded-full bg-gradient-to-r from-pro-pink to-pro-violet px-8 py-3.5 text-center text-lg font-semibold text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
                     : PRIMARY_BUTTON
                 }`}
               >
@@ -170,8 +204,12 @@ export function Pricing() {
           ))}
         </div>
         <p className="mt-8 text-center text-slate-500">
-          Prices in US dollars; applicable tax is added at checkout. Already have a Doulio account?{" "}
-          <a href={SIGN_IN_URL} className="font-medium text-teal-dark hover:underline">
+          Prices in US dollars; applicable tax is added at checkout. Already
+          have a Doulio account?{" "}
+          <a
+            href={SIGN_IN_URL}
+            className="font-medium text-pro-pink hover:underline"
+          >
             Sign in
           </a>{" "}
           and choose Doulio PRO.
@@ -198,10 +236,11 @@ export function Faq() {
               key={faq.question}
               className="group"
               onToggle={(e) => {
-                if (e.currentTarget.open) trackEvent("faq_opened", { question: faq.question });
+                if (e.currentTarget.open)
+                  trackEvent("faq_opened", { question: faq.question });
               }}
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-medium text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-dark sm:text-xl">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-medium text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-pro-pink sm:text-xl">
                 {faq.question}
                 <svg
                   aria-hidden="true"
@@ -210,7 +249,7 @@ export function Faq() {
                   stroke="currentColor"
                   strokeWidth="1.75"
                   strokeLinecap="round"
-                  className="h-5 w-5 shrink-0 text-teal-dark transition-transform group-open:rotate-45 motion-reduce:transition-none"
+                  className="h-5 w-5 shrink-0 text-pro-pink transition-transform group-open:rotate-45 motion-reduce:transition-none"
                 >
                   <path d="M10 4v12M4 10h12" />
                 </svg>
@@ -228,7 +267,7 @@ export function ClosingCta() {
   return (
     <section className="bg-white px-4 py-24 text-center sm:px-6 sm:py-32">
       <h2 className={`mx-auto max-w-4xl ${HEADING} sm:text-7xl`}>
-        Ready when <span className="text-teal-dark">you</span> are.
+        Ready when <span className={GRADIENT_TEXT}>you</span> are.
       </h2>
       <p className={`mx-auto mt-5 max-w-2xl ${LEAD}`}>
         Less time on paperwork. More time with the families you support.
