@@ -18,7 +18,7 @@ const inter = Inter({
 
 const TITLE = "Doulio PRO | Run your doula practice in one place";
 const DESCRIPTION =
-  "Doulio PRO gives independent doulas their own workspace for clients, DOCS, insurance claims and reports. $39 a month or $390 a year.";
+  "Doulio PRO gives independent doulas their own workspace for clients, DOCS, insurance claims, payments, leads, reviews and reports. $39 a month or $390 a year.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pro.doulio.org"),

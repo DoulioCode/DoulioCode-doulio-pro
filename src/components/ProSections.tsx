@@ -68,10 +68,13 @@ export function Showcase({
   );
 }
 
+/** Five tints so that, in a three-column grid, neighbours rarely match. */
 const FEATURE_TINTS = [
   "bg-pro-pink-soft",
   "bg-pro-violet-soft",
   "bg-pro-sky-soft",
+  "bg-pro-orange-soft",
+  "bg-pro-green-soft",
 ];
 
 export function MoreFeatures() {
