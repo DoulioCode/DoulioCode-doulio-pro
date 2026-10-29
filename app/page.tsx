@@ -20,8 +20,15 @@ import {
   PRIMARY_BUTTON,
   Showcase,
 } from "@/components/ProSections";
+import {
+  BookSupportButton,
+  BusinessSupport,
+  ClientApp,
+  GrowthJourney,
+} from "@/components/GrowthSections";
 
 const TRUST_DOTS = [
+  "bg-pro-green",
   "bg-pro-violet",
   "bg-pro-pink",
   "bg-pro-sky",
@@ -40,13 +47,14 @@ export default function DoulioProPage() {
             Doulio PRO
           </p>
           <h1 className="mx-auto mt-4 max-w-5xl text-balance font-display text-5xl font-semibold leading-[1.02] tracking-tight text-slate-900 sm:text-7xl lg:text-8xl">
-            Your practice.
+            Build a doula practice
             <br />
-            <span className={GRADIENT_TEXT}>All in one place.</span>
+            <span className={GRADIENT_TEXT}>that thrives.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-xl text-slate-500 sm:text-2xl">
-            Clients, DOCS, insurance claims, payments and reports, in a
-            workspace made for independent doulas.
+            Clients, DOCS, insurance claims, payments, leads and reviews in one
+            workspace made for independent doulas. Plus free business support
+            and an app for your clients.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
             <GetProLink location="hero" className={PRIMARY_BUTTON}>
@@ -58,6 +66,9 @@ export default function DoulioProPage() {
             >
               From $32.50/mo billed yearly ›
             </a>
+          </div>
+          <div className="mt-8 flex justify-center">
+            <BookSupportButton location="hero" />
           </div>
           <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2.5">
             {TRUST_POINTS.map((point, index) => (
@@ -77,6 +88,9 @@ export default function DoulioProPage() {
             <HeroDevices />
           </div>
         </section>
+
+        <BusinessSupport />
+        <GrowthJourney />
 
         <Showcase
           id="clients"
@@ -119,6 +133,7 @@ export default function DoulioProPage() {
           <ReportsLaptop />
         </Showcase>
 
+        <ClientApp />
         <MoreFeatures />
         <HowItWorks />
         <Pricing />

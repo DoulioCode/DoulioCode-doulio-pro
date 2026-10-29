@@ -5,15 +5,15 @@ import { FAQS, MORE_FEATURES, STEPS } from "@/config/content";
 import { PLANS, SIGN_IN_URL } from "@/config/pro";
 import { trackEvent } from "@/lib/analytics";
 import { GetProLink } from "@/components/GetProLink";
+import { BookSupportButton } from "@/components/GrowthSections";
 
 export const PRIMARY_BUTTON =
   "inline-block rounded-full bg-gradient-to-r from-pro-pink to-pro-violet px-8 py-3.5 text-center text-lg font-semibold text-white shadow-lg shadow-pro-pink/25 transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink focus-visible:ring-offset-2";
 export const SECONDARY_BUTTON =
   "inline-block rounded-full border border-pro-pink px-8 py-3.5 text-center text-lg font-medium text-pro-pink transition hover:bg-pro-pink-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink focus-visible:ring-offset-2";
 
-/** Teal-to-violet-to-pink, the same headline gradient as the Doulio PRO page in the app. */
-export const GRADIENT_TEXT =
-  "bg-gradient-to-r from-teal-dark via-pro-violet to-pro-pink bg-clip-text text-transparent";
+export { GRADIENT_TEXT } from "@/components/styles";
+import { GRADIENT_TEXT } from "@/components/styles";
 
 const HEADING =
   "text-balance font-display text-4xl font-semibold tracking-tight text-slate-900 sm:text-6xl";
@@ -144,6 +144,12 @@ export function HowItWorks() {
   );
 }
 
+const PLAN_INCLUDES = [
+  "Every PRO feature",
+  "Free business support",
+  "The Doulio app for your clients",
+];
+
 export function Pricing() {
   return (
     <section
@@ -192,6 +198,27 @@ export function Pricing() {
               >
                 {plan.note}
               </p>
+              <ul
+                className={`mt-6 space-y-2 ${plan.plan === "yearly" ? "text-slate-200" : "text-slate-700"}`}
+              >
+                {PLAN_INCLUDES.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`mt-0.5 h-5 w-5 shrink-0 ${plan.plan === "yearly" ? "text-pink-300" : "text-pro-pink"}`}
+                    >
+                      <path d="M4.5 10.5l3.5 3.5 7.5-8" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
               <GetProLink
                 location="pricing"
                 plan={plan.plan}
@@ -273,11 +300,15 @@ export function ClosingCta() {
         Ready when <span className={GRADIENT_TEXT}>you</span> are.
       </h2>
       <p className={`mx-auto mt-5 max-w-2xl ${LEAD}`}>
-        Less time on paperwork. More time with the families you support.
+        Less time on paperwork. More time with the families you support. And
+        the Doulio team behind you as you grow.
       </p>
-      <GetProLink location="closing" className={`mt-10 ${PRIMARY_BUTTON}`}>
-        Get Doulio PRO
-      </GetProLink>
+      <div className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row">
+        <GetProLink location="closing" className={PRIMARY_BUTTON}>
+          Get Doulio PRO
+        </GetProLink>
+        <BookSupportButton location="closing" />
+      </div>
     </section>
   );
 }

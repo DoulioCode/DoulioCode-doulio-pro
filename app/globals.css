@@ -82,3 +82,32 @@ h3 {
     transition: none;
   }
 }
+
+/* "Book free business support": a PRO-colored ring that slowly turns. */
+@property --support-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes support-spin {
+  to {
+    --support-angle: 360deg;
+  }
+}
+.support-ring {
+  background: conic-gradient(
+    from var(--support-angle),
+    #eb2d93,
+    #824dff,
+    #1697f3,
+    #25935c,
+    #ff751a,
+    #eb2d93
+  );
+  animation: support-spin 5s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .support-ring {
+    animation: none;
+  }
+}

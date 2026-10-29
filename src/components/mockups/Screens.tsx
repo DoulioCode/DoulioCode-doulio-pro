@@ -363,3 +363,68 @@ export function ClaimsScreen() {
     </AppShell>
   );
 }
+
+/** The client's Doulio app: home with the next visit, pregnancy progress, a form to fill in and messages */
+export function ClientAppPhoneScreen() {
+  return (
+    <div className="flex h-full w-full flex-col bg-[#f3f8f7] pt-14 text-[#2a3b3c]">
+      <div className="flex-1 px-5">
+        <p className="text-xs font-semibold uppercase tracking-wide text-[#178488]">Doulio</p>
+        <h1 className="mt-1 text-3xl font-semibold">Hi Maya</h1>
+        <div className="mt-5 rounded-2xl bg-gradient-to-br from-[#178488] to-[#62bbaf] p-5 text-white shadow-sm">
+          <p className="text-[11px] font-medium uppercase tracking-wide opacity-80">Next meeting</p>
+          <p className="mt-1 text-xl font-semibold">Prenatal visit</p>
+          <p className="text-sm opacity-90">Thursday, 2:00 PM · with Jane</p>
+        </div>
+        <div className="mt-3 rounded-2xl bg-white p-5 shadow-sm">
+          <div className="flex items-center justify-between text-sm">
+            <span className="font-semibold">32 weeks</span>
+            <span className="text-[#6b8283]">8 weeks to go</span>
+          </div>
+          <div className="mt-2 h-2 rounded-full bg-[#dceeec]">
+            <div className="h-2 w-4/5 rounded-full bg-[#178488]" />
+          </div>
+        </div>
+        <div className="mt-3 flex items-center justify-between rounded-2xl bg-white p-5 shadow-sm">
+          <div>
+            <p className="font-semibold">Birth plan</p>
+            <p className="text-sm text-[#6b8283]">Jane asked you to fill this in</p>
+          </div>
+          <span className="rounded-full bg-[#178488] px-3 py-1.5 text-xs font-semibold text-white">
+            Start
+          </span>
+        </div>
+        <div className="mt-3 rounded-2xl bg-white p-5 shadow-sm">
+          <p className="text-[11px] font-medium uppercase tracking-wide text-[#6b8283]">Your doulas</p>
+          <div className="mt-2 flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#fde2f1] text-sm font-semibold text-[#eb2d93]">
+              JD
+            </span>
+            <div>
+              <p className="font-semibold">Jane Doe</p>
+              <p className="text-sm text-[#6b8283]">Birth and postpartum doula</p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-3 rounded-2xl bg-white p-5 shadow-sm">
+          <p className="text-[11px] font-medium uppercase tracking-wide text-[#6b8283]">Messages</p>
+          <div className="mt-2 flex items-start gap-3">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#fde2f1] text-xs font-semibold text-[#eb2d93]">
+              JD
+            </span>
+            <p className="rounded-2xl rounded-tl-sm bg-[#f3f8f7] px-3 py-2 text-base">
+              See you Thursday! Bring any questions about your birth plan.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 flex justify-around border-t border-[#dce6e6] bg-white px-2 pb-6 pt-3 text-xs text-[#6b8283]">
+        {["Home", "Messages", "Schedule", "Docs", "Profile"].map((tab) => (
+          <span key={tab} className={tab === "Home" ? "font-semibold text-[#178488]" : ""}>
+            {tab}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
