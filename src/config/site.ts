@@ -15,14 +15,9 @@ export const NAV_LINKS = [
   { label: "Contact", href: `${SITE_URL}/contact` },
 ];
 
-/**
- * Where "Book free business support" goes. Waiting on the booking link for PRO
- * business support sessions; until then it opens the contact form, tagged so the
- * team can tell these requests apart.
- */
+/** "Book free business support": the Zoom Scheduler page for PRO doula business support sessions. */
 export const BUSINESS_SUPPORT_URL =
-  process.env.NEXT_PUBLIC_BUSINESS_SUPPORT_URL ||
-  `${SITE_URL}/contact?interest=customer-support&source=pro-business-support`;
+  "https://scheduler.zoom.us/doulio-inc/doulio-pro-doula-business-support";
 
 /** The client app ("Doulio: Doula Care"), as the API's public mobile-version endpoint returns them. */
 export const APP_STORE_URL = "https://apps.apple.com/us/app/doulio-doula-care/id6819199825";
