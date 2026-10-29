@@ -3,6 +3,7 @@ import { Laptop, Phone } from "@/components/mockups/Devices";
 import { ScaledScreen } from "@/components/mockups/ScaledScreen";
 import {
   ClaimsScreen,
+  ClientAppPhoneScreen,
   ClientsScreen,
   DashboardPhoneScreen,
   DashboardScreen,
@@ -73,6 +74,14 @@ export function RecordDocsPhone() {
   return (
     <PhoneScreen label="Recording a client's DOCS on a phone: intake, birth plan and visit forms, each with Record, Continue or View">
       <RecordDocsPhoneScreen />
+    </PhoneScreen>
+  );
+}
+
+export function ClientAppPhone() {
+  return (
+    <PhoneScreen label="The Doulio app on a client's phone: her next meeting with her doula, pregnancy progress, a birth plan form to fill in and a message from her doula">
+      <ClientAppPhoneScreen />
     </PhoneScreen>
   );
 }

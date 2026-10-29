@@ -14,3 +14,16 @@ export const NAV_LINKS = [
   { label: "Find a Doula", href: `${SITE_URL}/directory` },
   { label: "Contact", href: `${SITE_URL}/contact` },
 ];
+
+/**
+ * Where "Book free business support" goes. Waiting on the booking link for PRO
+ * business support sessions; until then it opens the contact form, tagged so the
+ * team can tell these requests apart.
+ */
+export const BUSINESS_SUPPORT_URL =
+  process.env.NEXT_PUBLIC_BUSINESS_SUPPORT_URL ||
+  `${SITE_URL}/contact?interest=customer-support&source=pro-business-support`;
+
+/** The client app ("Doulio: Doula Care"), as the API's public mobile-version endpoint returns them. */
+export const APP_STORE_URL = "https://apps.apple.com/us/app/doulio-doula-care/id6819199825";
+export const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=org.doulio.app";
