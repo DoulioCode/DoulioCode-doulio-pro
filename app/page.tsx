@@ -2,6 +2,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageViewTracker } from "@/components/PageViewTracker";
 import { GetProLink } from "@/components/GetProLink";
+import { ProVideo } from "@/components/ProVideo";
 import { TRUST_POINTS } from "@/config/content";
 import {
   ClaimsLaptop,
@@ -89,6 +90,7 @@ export default function DoulioProPage() {
           </div>
         </section>
 
+        <ProVideo />
         <BusinessSupport />
         <GrowthJourney />
 

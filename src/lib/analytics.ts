@@ -6,7 +6,8 @@ export type AnalyticsEventName =
   | "get_pro_clicked"
   | "book_demo_clicked"
   | "business_support_clicked"
-  | "app_store_clicked";
+  | "app_store_clicked"
+  | "pro_video_interaction";
 
 type AnalyticsPayload = Record<string, unknown>;
 
