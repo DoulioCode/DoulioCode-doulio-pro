@@ -15,7 +15,7 @@ export const NAV_LINKS = [
   { label: "Contact", href: `${SITE_URL}/contact` },
 ];
 
-/** "Book free business support": the Zoom Scheduler page for PRO doula business support sessions. */
+/** "Book complimentary business support": the Zoom Scheduler page for PRO doula business support sessions. */
 export const BUSINESS_SUPPORT_URL =
   "https://scheduler.zoom.us/doulio-inc/doulio-pro-doula-business-support";
 

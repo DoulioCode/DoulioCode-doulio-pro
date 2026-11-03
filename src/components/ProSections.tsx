@@ -146,7 +146,7 @@ export function HowItWorks() {
 
 const PLAN_INCLUDES = [
   "Every PRO feature",
-  "Free business support",
+  "Complimentary business support",
   "The Doulio app for your clients",
 ];
 

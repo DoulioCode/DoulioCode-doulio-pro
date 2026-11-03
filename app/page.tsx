@@ -54,7 +54,7 @@ export default function DoulioProPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-xl text-slate-500 sm:text-2xl">
             Clients, DOCS, insurance claims, payments, leads and reviews in one
-            workspace made for independent doulas. Plus free business support
+            workspace made for independent doulas. Plus complimentary business support
             and an app for your clients.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">

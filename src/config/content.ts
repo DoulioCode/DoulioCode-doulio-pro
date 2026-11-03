@@ -6,7 +6,7 @@
 
 /** Trust points shown under the hero buttons. */
 export const TRUST_POINTS: string[] = [
-  "Free business support",
+  "Complimentary business support",
   "HIPAA compliant",
   "Client app for iPhone and Android",
   "Your own public page",
@@ -14,7 +14,7 @@ export const TRUST_POINTS: string[] = [
 ];
 
 /**
- * Free business support for PRO doulas. A service from the Doulio team, not a
+ * Complimentary business support for PRO doulas. A service from the Doulio team, not a
  * feature of the app: keep the topics tied to what PRO actually does.
  */
 export const SUPPORT_TOPICS: Array<{ title: string; body: string }> = [
@@ -131,10 +131,10 @@ export const FAQS: Array<{ question: string; answer: string }> = [
   {
     question: "What is Doulio PRO?",
     answer:
-      "Doulio PRO gives an independent doula her own workspace, My Practice, for running and growing her practice: clients, DOCS, insurance claims, invoices and payments, leads, reviews, resources and reports, plus free business support from the Doulio team and the Doulio app for her clients.",
+      "Doulio PRO gives an independent doula her own workspace, My Practice, for running and growing her practice: clients, DOCS, insurance claims, invoices and payments, leads, reviews, resources and reports, plus complimentary business support from the Doulio team and the Doulio app for her clients.",
   },
   {
-    question: "What is the free business support?",
+    question: "What is the complimentary business support?",
     answer:
       "Every PRO doula can book time with the Doulio team for help growing her business: setting up her practice, getting ready to bill insurance, invoicing, getting found in the directory and using her reports. It is included with PRO at no extra cost.",
   },

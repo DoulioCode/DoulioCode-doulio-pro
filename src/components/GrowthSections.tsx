@@ -12,7 +12,7 @@ const EYEBROW = "font-display text-lg font-semibold text-pro-pink";
 const LEAD = "text-balance text-xl text-slate-500 sm:text-2xl";
 
 /**
- * "Book free business support": a dark pill inside a slowly turning PRO-colored
+ * "Book complimentary business support": a dark pill inside a slowly turning PRO-colored
  * ring, with a soft glow. The ring and glow stop under reduced motion.
  */
 export function BookSupportButton({
@@ -54,10 +54,11 @@ export function BookSupportButton({
           </span>
           <span className="flex flex-col pr-1">
             <span className="whitespace-nowrap font-display text-[15px] font-semibold leading-tight sm:text-lg">
-              Book free business support
+              Book <span className="hidden sm:inline">complimentary </span>business support
             </span>
             <span className="text-xs text-slate-300 sm:text-sm">
-              Included with PRO<span className="hidden sm:inline"> · with the Doulio team</span>
+              <span className="sm:hidden">Complimentary with PRO</span>
+              <span className="hidden sm:inline">Included with PRO · with the Doulio team</span>
             </span>
           </span>
           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none">
@@ -83,7 +84,7 @@ export function BookSupportButton({
 
 const TOPIC_COLORS = ["text-pro-pink", "text-pro-violet", "text-pro-sky", "text-pro-orange"];
 
-/** The highlighted free business support section, dark so it stands out from the page. */
+/** The highlighted complimentary business support section, dark so it stands out from the page. */
 export function BusinessSupport() {
   return (
     <section
@@ -103,7 +104,7 @@ export function BusinessSupport() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pro-pink opacity-75 motion-reduce:animate-none" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-pro-pink" />
               </span>
-              Free with every PRO plan
+              Complimentary with every PRO plan
             </p>
             <h2
               id="support-heading"
@@ -115,7 +116,7 @@ export function BusinessSupport() {
               </span>
             </h2>
             <p className="mt-5 text-balance text-xl text-slate-300 sm:text-2xl">
-              Every PRO doula gets free business support from the Doulio team. Book a
+              Every PRO doula gets complimentary business support from the Doulio team. Book a
               session and get help with the parts of a doula business that are hardest to
               figure out on your own.
             </p>
@@ -197,7 +198,7 @@ export function GrowthJourney() {
             href="#business-support"
             className="font-semibold text-pro-pink hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink"
           >
-            Free business support is included ›
+            Complimentary business support is included ›
           </a>
         </p>
       </div>
