@@ -16,9 +16,9 @@ const inter = Inter({
   variable: "--font-body",
 });
 
-const TITLE = "Doulio PRO | Build a thriving doula practice";
+const TITLE = "Doulio PRO | Get paid by families and by insurance";
 const DESCRIPTION =
-  "Doulio PRO gives independent doulas their own workspace for clients, DOCS, insurance claims, payments, leads, reviews and reports, with complimentary business support and the Doulio app for their clients. $39 a month or $390 a year.";
+  "Doulio PRO helps independent doulas get paid by families and by insurance: bill insurance, take card payments, and manage clients, leads, DOCS and reviews in one workspace, with complimentary business support and the Doulio app for their clients. $39 a month or $390 a year.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pro.doulio.org"),
