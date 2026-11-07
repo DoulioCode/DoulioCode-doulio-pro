@@ -22,7 +22,6 @@ import {
   Showcase,
 } from "@/components/ProSections";
 import {
-  BookSupportButton,
   BusinessSupport,
   ClientApp,
   GrowthJourney,
@@ -67,9 +66,6 @@ export default function DoulioProPage() {
             >
               From $32.50/mo billed yearly ›
             </a>
-          </div>
-          <div className="mt-8 flex justify-center">
-            <BookSupportButton location="hero" />
           </div>
           <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2.5">
             {TRUST_POINTS.map((point, index) => (
