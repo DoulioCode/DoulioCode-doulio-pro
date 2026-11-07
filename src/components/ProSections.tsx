@@ -164,7 +164,19 @@ export function Pricing() {
           </h2>
           <p className={`mt-5 ${LEAD}`}>Pay monthly, or save with a year.</p>
         </div>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2">
+        <div className="mx-auto mt-12 max-w-2xl rounded-3xl bg-pro-green-soft px-6 py-8 text-center sm:px-10">
+          <p className="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+            PRO pays for itself.
+          </p>
+          <p className="mt-3 text-lg text-slate-600 sm:text-xl">
+            One reimbursed insurance visit can cover months of Doulio PRO. One
+            birth client can cover years.
+          </p>
+          <p className="mt-3 text-sm text-slate-500">
+            Insurance billing is available where your state covers doula care.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2">
           {PLANS.map((plan) => (
             <div
               key={plan.plan}

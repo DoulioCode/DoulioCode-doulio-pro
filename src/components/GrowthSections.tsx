@@ -167,7 +167,7 @@ export function GrowthJourney() {
         <div className="mx-auto max-w-3xl text-center">
           <p className={EYEBROW}>Grow your business</p>
           <h2 id="grow-heading" className={`mt-3 ${HEADING}`}>
-            Built for a <span className={GRADIENT_TEXT}>thriving</span> practice.
+            From first inquiry to <span className={GRADIENT_TEXT}>getting paid.</span>
           </h2>
           <p className={`mt-5 ${LEAD}`}>
             Everything a doula business runs on, from the first inquiry to the five-star
