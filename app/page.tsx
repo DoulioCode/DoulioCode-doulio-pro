@@ -22,7 +22,6 @@ import {
   Showcase,
 } from "@/components/ProSections";
 import {
-  BookSupportButton,
   BusinessSupport,
   ClientApp,
   GrowthJourney,
@@ -47,15 +46,15 @@ export default function DoulioProPage() {
           <p className="font-display text-lg font-semibold text-pro-pink sm:text-xl">
             Doulio PRO
           </p>
-          <h1 className="mx-auto mt-4 max-w-5xl text-balance font-display text-5xl font-semibold leading-[1.02] tracking-tight text-slate-900 sm:text-7xl lg:text-8xl">
-            Build a doula practice
-            <br />
-            <span className={GRADIENT_TEXT}>that thrives.</span>
+          <h1 className="mx-auto mt-4 max-w-5xl text-balance font-display text-5xl font-semibold leading-[1.04] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
+            Get paid by families{" "}
+            <span className={GRADIENT_TEXT}>and by insurance.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-xl text-slate-500 sm:text-2xl">
-            Clients, DOCS, insurance claims, payments, leads and reviews in one
-            workspace made for independent doulas. Plus complimentary business support
-            and an app for your clients.
+            Bill insurance where your state covers doula care, invoice private-pay
+            clients by card, and turn directory inquiries into booked clients, all in
+            one workspace made for independent doulas. Plus complimentary business
+            support and an app for your clients.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
             <GetProLink location="hero" className={PRIMARY_BUTTON}>
@@ -67,9 +66,6 @@ export default function DoulioProPage() {
             >
               From $32.50/mo billed yearly ›
             </a>
-          </div>
-          <div className="mt-8 flex justify-center">
-            <BookSupportButton location="hero" />
           </div>
           <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2.5">
             {TRUST_POINTS.map((point, index) => (
@@ -91,6 +87,17 @@ export default function DoulioProPage() {
         </section>
 
         <ProVideo />
+
+        <Showcase
+          id="insurance"
+          eyebrow="Insurance"
+          title="Check eligibility. Submit claims. Get reimbursed."
+          body="See a client's coverage in seconds, send claims to insurance from Doulio, and track every one until it's paid."
+          tone="gray"
+        >
+          <ClaimsLaptop />
+        </Showcase>
+
         <BusinessSupport />
         <GrowthJourney />
 
@@ -116,21 +123,11 @@ export default function DoulioProPage() {
         </Showcase>
 
         <Showcase
-          id="insurance"
-          eyebrow="Insurance"
-          title="Check eligibility. Submit claims. Get reimbursed."
-          body="See a client's coverage in seconds, send claims to insurance from Doulio, and track every one until it's paid."
-          tone="gray"
-        >
-          <ClaimsLaptop />
-        </Showcase>
-
-        <Showcase
           id="reports"
           eyebrow="Reports"
           title="See the difference you make."
           body="Clients served, births and outcomes over any period, with a PDF summary ready to share."
-          tone="white"
+          tone="gray"
         >
           <ReportsLaptop />
         </Showcase>

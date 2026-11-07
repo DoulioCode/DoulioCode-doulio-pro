@@ -6,11 +6,11 @@
 
 /** Trust points shown under the hero buttons. */
 export const TRUST_POINTS: string[] = [
+  "Insurance billing",
+  "Card payments to your own Stripe",
   "Complimentary business support",
-  "HIPAA compliant",
   "Client app for iPhone and Android",
-  "Your own public page",
-  "No website needed",
+  "HIPAA compliant",
 ];
 
 /**
