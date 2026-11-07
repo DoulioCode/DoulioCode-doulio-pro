@@ -47,8 +47,8 @@ export default function DoulioProPage() {
             Doulio PRO
           </p>
           <h1 className="mx-auto mt-4 max-w-5xl text-balance font-display text-5xl font-semibold leading-[1.04] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
-            Get paid for your doula work,{" "}
-            <span className={GRADIENT_TEXT}>including by insurance.</span>
+            Get paid by families{" "}
+            <span className={GRADIENT_TEXT}>and by insurance.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-xl text-slate-500 sm:text-2xl">
             Bill insurance where your state covers doula care, invoice private-pay
