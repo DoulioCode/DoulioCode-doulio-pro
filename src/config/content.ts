@@ -186,3 +186,33 @@ export const FAQS: Array<{ question: string; answer: string }> = [
     answer: "Prices are in US dollars. Any applicable sales tax is added at checkout.",
   },
 ];
+
+/**
+ * Customer testimonials, shown as a rotating slider. Only add quotes the person has approved
+ * for public use. `highlight` is the closing phrase shown in the gradient.
+ */
+export const TESTIMONIALS: Array<{
+  quote: string;
+  highlight: string;
+  name: string;
+  role: string;
+  photo?: string;
+}> = [
+  {
+    quote:
+      "Submitting claims is straightforward, saving us time and eliminating the hassle of going directly through health plans. Our doulas can efficiently manage their clients and documentation, while families can connect with their doulas, schedule appointments, and access helpful resources all in one place.",
+    highlight: "It’s a 10/10 from our team at Sereni!",
+    name: "Angelique Adderly",
+    role: "Founder, Sereni Postnatal Retreat",
+    photo: "/media/testimonials/angelique-adderly.jpg",
+  },
+  {
+    // DRAFT: awaiting Latoya's approval of the wording.
+    quote:
+      "Doulio PRO put my whole practice in one place. My clients, paperwork and payments are organized, and my clients love having the app.",
+    highlight: "I finally feel like I’m running a real business.",
+    name: "Latoya Rawls",
+    role: "Owner, Blissful Birth Services",
+    photo: "/media/testimonials/latoya-rawls.jpg",
+  },
+];

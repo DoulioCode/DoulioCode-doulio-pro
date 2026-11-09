@@ -1,8 +1,8 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Image from "next/image";
-import { FAQS, MORE_FEATURES, STEPS } from "@/config/content";
+import { FAQS, MORE_FEATURES, STEPS, TESTIMONIALS } from "@/config/content";
 import { PLANS, SIGN_IN_URL } from "@/config/pro";
 import { trackEvent } from "@/lib/analytics";
 import { GetProLink } from "@/components/GetProLink";
@@ -326,15 +326,33 @@ export function ClosingCta() {
   );
 }
 
+const SLIDE_MS = 8000;
+
 export function Testimonial() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const count = TESTIMONIALS.length;
+
+  useEffect(() => {
+    if (paused || count < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(() => setIndex((i) => (i + 1) % count), SLIDE_MS);
+    return () => window.clearInterval(id);
+  }, [paused, count]);
+
   return (
     <section
       aria-labelledby="testimonial-heading"
+      aria-roledescription="carousel"
       className="bg-white px-4 py-24 sm:px-6 sm:py-32"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
     >
-      <figure className="mx-auto max-w-4xl text-center">
+      <div className="mx-auto max-w-4xl text-center">
         <h2 id="testimonial-heading" className="sr-only">
-          What doula teams say about Doulio
+          What doulas say about Doulio
         </h2>
         <svg
           aria-hidden="true"
@@ -344,28 +362,67 @@ export function Testimonial() {
         >
           <path d="M0 36V22.5C0 9.6 6.4 2.1 19.2 0l2.1 4.8C14.4 6.6 10.8 10.5 10.5 16.5H19.5V36H0Zm28.5 0V22.5C28.5 9.6 34.9 2.1 47.7 0l2.1 4.8c-6.9 1.8-10.5 5.7-10.8 11.7H48V36H28.5Z" />
         </svg>
-        <blockquote className="mt-8 text-balance font-display text-2xl font-medium leading-snug tracking-tight text-slate-900 sm:text-4xl">
-          Submitting claims is straightforward, saving us time and eliminating
-          the hassle of going directly through health plans. Our doulas can
-          efficiently manage their clients and documentation, while families can
-          connect with their doulas, schedule appointments, and access helpful
-          resources all in one place.{" "}
-          <span className={GRADIENT_TEXT}>It’s a 10/10 from our team at Sereni!</span>
-        </blockquote>
-        <figcaption className="mt-10 flex items-center justify-center gap-4 text-left">
-          <Image
-            src="/media/testimonials/angelique-adderly.jpg"
-            alt="Angelique Adderly"
-            width={64}
-            height={64}
-            className="h-16 w-16 rounded-full object-cover"
-          />
-          <div>
-            <p className="text-lg font-semibold text-slate-900">Angelique Adderly</p>
-            <p className="text-slate-500">Founder, Sereni Postnatal Retreat</p>
+        <div className="mt-8 overflow-hidden">
+          <div
+            className="flex transition-transform duration-700 ease-out motion-reduce:transition-none"
+            style={{ transform: `translateX(-${index * 100}%)` }}
+            aria-live={paused ? "polite" : "off"}
+          >
+            {TESTIMONIALS.map((t, i) => (
+              <figure
+                key={t.name}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${i + 1} of ${count}`}
+                aria-hidden={i !== index}
+                className="flex w-full shrink-0 flex-col items-center justify-center px-1"
+              >
+                <blockquote className="text-balance font-display text-2xl font-medium leading-snug tracking-tight text-slate-900 sm:text-4xl">
+                  {t.quote} <span className={GRADIENT_TEXT}>{t.highlight}</span>
+                </blockquote>
+                <figcaption className="mt-10 flex items-center justify-center gap-4 text-left">
+                  {t.photo ? (
+                    <Image
+                      src={t.photo}
+                      alt={t.name}
+                      width={64}
+                      height={64}
+                      className="h-16 w-16 rounded-full object-cover"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-pro-pink to-pro-violet font-display text-2xl font-semibold text-white"
+                    >
+                      {t.name.charAt(0)}
+                    </span>
+                  )}
+                  <div>
+                    <p className="text-lg font-semibold text-slate-900">{t.name}</p>
+                    <p className="text-slate-500">{t.role}</p>
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
           </div>
-        </figcaption>
-      </figure>
+        </div>
+        {count > 1 && (
+          <div className="mt-10 flex justify-center gap-3">
+            {TESTIMONIALS.map((t, i) => (
+              <button
+                key={t.name}
+                type="button"
+                onClick={() => setIndex(i)}
+                aria-label={`Show testimonial ${i + 1} of ${count}`}
+                aria-current={i === index}
+                className={`h-2.5 rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink focus-visible:ring-offset-2 ${
+                  i === index ? "w-8 bg-pro-pink" : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   );
 }
