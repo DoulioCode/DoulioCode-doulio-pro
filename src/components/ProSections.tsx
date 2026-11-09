@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { FAQS, MORE_FEATURES, STEPS } from "@/config/content";
 import { PLANS, SIGN_IN_URL } from "@/config/pro";
 import { trackEvent } from "@/lib/analytics";
@@ -321,6 +322,50 @@ export function ClosingCta() {
         </GetProLink>
         <BookSupportButton location="closing" />
       </div>
+    </section>
+  );
+}
+
+export function Testimonial() {
+  return (
+    <section
+      aria-labelledby="testimonial-heading"
+      className="bg-white px-4 py-24 sm:px-6 sm:py-32"
+    >
+      <figure className="mx-auto max-w-4xl text-center">
+        <h2 id="testimonial-heading" className="sr-only">
+          What doula teams say about Doulio
+        </h2>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 48 36"
+          className="mx-auto h-9 w-12 text-pro-pink"
+          fill="currentColor"
+        >
+          <path d="M0 36V22.5C0 9.6 6.4 2.1 19.2 0l2.1 4.8C14.4 6.6 10.8 10.5 10.5 16.5H19.5V36H0Zm28.5 0V22.5C28.5 9.6 34.9 2.1 47.7 0l2.1 4.8c-6.9 1.8-10.5 5.7-10.8 11.7H48V36H28.5Z" />
+        </svg>
+        <blockquote className="mt-8 text-balance font-display text-2xl font-medium leading-snug tracking-tight text-slate-900 sm:text-4xl">
+          Submitting claims is straightforward, saving us time and eliminating
+          the hassle of going directly through health plans. Our doulas can
+          efficiently manage their clients and documentation, while families can
+          connect with their doulas, schedule appointments, and access helpful
+          resources all in one place.{" "}
+          <span className={GRADIENT_TEXT}>It’s a 10/10 from our team at Sereni!</span>
+        </blockquote>
+        <figcaption className="mt-10 flex items-center justify-center gap-4 text-left">
+          <Image
+            src="/media/testimonials/angelique-adderly.jpg"
+            alt="Angelique Adderly"
+            width={64}
+            height={64}
+            className="h-16 w-16 rounded-full object-cover"
+          />
+          <div>
+            <p className="text-lg font-semibold text-slate-900">Angelique Adderly</p>
+            <p className="text-slate-500">Founder, Sereni Postnatal Retreat</p>
+          </div>
+        </figcaption>
+      </figure>
     </section>
   );
 }

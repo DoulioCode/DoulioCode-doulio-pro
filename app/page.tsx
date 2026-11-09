@@ -20,6 +20,7 @@ import {
   Pricing,
   PRIMARY_BUTTON,
   Showcase,
+  Testimonial,
 } from "@/components/ProSections";
 import {
   BusinessSupport,
@@ -97,6 +98,8 @@ export default function DoulioProPage() {
         >
           <ClaimsLaptop />
         </Showcase>
+
+        <Testimonial />
 
         <BusinessSupport />
         <GrowthJourney />
