@@ -207,7 +207,6 @@ export const TESTIMONIALS: Array<{
     photo: "/media/testimonials/angelique-adderly.jpg",
   },
   {
-    // DRAFT: awaiting Latoya's approval of the wording.
     quote:
       "Doulio PRO put my whole practice in one place. My clients, paperwork and payments are organized, and my clients love having the app.",
     highlight: "I finally feel like I’m running a real business.",
