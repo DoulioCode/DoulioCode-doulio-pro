@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { PageViewTracker } from "@/components/PageViewTracker";
 import { GetProLink } from "@/components/GetProLink";
 import { ProVideo } from "@/components/ProVideo";
+import { BecomeADoula, BecomeADoulaLink } from "@/components/BecomeADoula";
 import { TRUST_POINTS } from "@/config/content";
 import {
   ClaimsLaptop,
@@ -82,6 +83,16 @@ export default function DoulioProPage() {
               </li>
             ))}
           </ul>
+          <p className="mt-6 text-base text-slate-500">
+            Not a doula yet?{" "}
+            <BecomeADoulaLink
+              location="hero"
+              destination="become_a_doula"
+              className="font-medium text-teal-dark hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark"
+            >
+              Learn how to become one ›
+            </BecomeADoulaLink>
+          </p>
           <div className="mt-16 sm:mt-20">
             <HeroDevices />
           </div>
@@ -139,6 +150,7 @@ export default function DoulioProPage() {
         <MoreFeatures />
         <HowItWorks />
         <Pricing />
+        <BecomeADoula />
         <Faq />
         <ClosingCta />
       </main>

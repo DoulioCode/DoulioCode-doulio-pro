@@ -20,3 +20,7 @@ npm run build
 - `NEXT_PUBLIC_DOULIO_APP_URL` overrides the app address (e.g. `https://stage.doulio.org` for a
   preview); default `https://app.doulio.org`
 - Analytics: PostHog via `NEXT_PUBLIC_POSTHOG_KEY` (see `.env.example`)
+- "Not a doula yet?" (hero link + section after Pricing, `src/components/BecomeADoula.tsx`) sends
+  aspiring doulas to doulio.org: `becomeADoulaUrl` / `doulaTrainingContactUrl` in
+  `src/config/site.ts`. The contact link's `interest=certification` preselects "Becoming a
+  certified doula" on the doulio.org form. Clicks are `become_doula_clicked` (location, destination).
