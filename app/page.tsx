@@ -49,14 +49,13 @@ export default function DoulioProPage() {
             Doulio PRO
           </p>
           <h1 className="mx-auto mt-4 max-w-5xl text-balance font-display text-5xl font-semibold leading-[1.04] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
-            Get paid by families{" "}
-            <span className={GRADIENT_TEXT}>and by insurance.</span>
+            Doula work,{" "}
+            <span className={GRADIENT_TEXT}>made easy.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-xl text-slate-500 sm:text-2xl">
-            Bill insurance where your state covers doula care, invoice private-pay
-            clients by card, and turn directory inquiries into booked clients, all in
-            one workspace made for independent doulas. Plus complimentary business
-            support and an app for your clients.
+            Your clients, paperwork and payments, including insurance, all in one
+            simple place. Spend less time on admin and more time with families, with
+            complimentary business support whenever you need it.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
             <GetProLink location="hero" className={PRIMARY_BUTTON}>
