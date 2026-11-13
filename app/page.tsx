@@ -53,9 +53,8 @@ export default function DoulioProPage() {
             <span className={GRADIENT_TEXT}>made easy.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-xl text-slate-500 sm:text-2xl">
-            Your clients, paperwork and payments, including insurance, all in one
-            simple place. Spend less time on admin and more time with families, with
-            complimentary business support whenever you need it.
+            Clients, paperwork and payments in one simple place, so you can spend
+            more time with families.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
             <GetProLink location="hero" className={PRIMARY_BUTTON}>
