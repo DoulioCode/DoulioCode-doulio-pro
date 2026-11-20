@@ -4,6 +4,7 @@ import { PageViewTracker } from "@/components/PageViewTracker";
 import { GetProLink } from "@/components/GetProLink";
 import { ProVideo } from "@/components/ProVideo";
 import { BecomeADoula, BecomeADoulaLink } from "@/components/BecomeADoula";
+import { FitFinder } from "@/components/FitFinder";
 import { TRUST_POINTS } from "@/config/content";
 import {
   ClaimsLaptop,
@@ -148,6 +149,7 @@ export default function DoulioProPage() {
         <ClientApp />
         <MoreFeatures />
         <HowItWorks />
+        <FitFinder />
         <Pricing />
         <BecomeADoula />
         <Faq />
