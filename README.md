@@ -24,3 +24,9 @@ npm run build
   aspiring doulas to doulio.org: `becomeADoulaUrl` / `doulaTrainingContactUrl` in
   `src/config/site.ts`. The contact link's `interest=certification` preselects "Becoming a
   certified doula" on the doulio.org form. Clicks are `become_doula_clicked` (location, destination).
+- "Is PRO right for you?" finder (`src/components/FitFinder.tsx`, section `#find-your-fit` before
+  Pricing): one question, plus team size for teams, that recommends PRO, PRO + Seats, Doulio OS,
+  Enterprise or doula training. Plans, prices and the `recommend()` rules are in
+  `src/config/products.ts` (from the Doulio Platform Overview; keep them in step with it).
+  PRO results link to the app sign-up; OS and Enterprise to the demo scheduler. Answers are
+  `fit_finder_answered` (style, team_size, result).

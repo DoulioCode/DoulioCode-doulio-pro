@@ -257,6 +257,13 @@ export function Pricing() {
           </a>{" "}
           and choose Doulio PRO.
         </p>
+        <p className="mt-3 text-center text-slate-500">
+          Working with a team, or running an agency?{" "}
+          <a href="#find-your-fit" className="font-medium text-pro-pink hover:underline">
+            Find the plan that fits
+          </a>
+          .
+        </p>
       </div>
     </section>
   );

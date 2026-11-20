@@ -8,7 +8,8 @@ export type AnalyticsEventName =
   | "business_support_clicked"
   | "app_store_clicked"
   | "pro_video_interaction"
-  | "become_doula_clicked";
+  | "become_doula_clicked"
+  | "fit_finder_answered";
 
 type AnalyticsPayload = Record<string, unknown>;
 
