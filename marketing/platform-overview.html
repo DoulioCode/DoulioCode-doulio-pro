@@ -1,0 +1,303 @@
+<title>Doulio Platform Overview</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rethink+Sans:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: a single letter-width sheet. Hero, four audience columns, the client path as one rail, templates, proof strip. */
+:root {
+  --bg: #eef5f3;
+  --sheet: #ffffff;
+  --ink: #12302f;
+  --muted: #4f6866;
+  --line: #d6e6e2;
+  --teal: #178488;
+  --teal-soft: #c2eee4;
+  --tint: #f2faf8;
+  --coral: #c16f6a;
+  --peach: #f7dccf;
+  --on-teal: #ffffff;
+  color-scheme: light;
+  --display: "Rethink Sans", "Inter", system-ui, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 15px/1.55 var(--body);
+  -webkit-font-smoothing: antialiased;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px;
+}
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: var(--teal); }
+a:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 4px; }
+
+.sheet {
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.pad { padding: 40px 48px; }
+@media (max-width: 640px) { .pad { padding: 28px 22px; } }
+
+.eyebrow {
+  font: 600 11.5px/1 var(--body);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+/* Header + hero */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.top img { height: 30px; width: auto; display: block; }
+.top .eyebrow { color: var(--muted); }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: end; margin-top: 44px; }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; gap: 24px; } }
+.hero h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.04; font-weight: 800; letter-spacing: -0.02em; }
+.hero h1 em { font-style: normal; color: var(--teal); }
+.hero .lede { color: var(--muted); font-size: 16.5px; max-width: 38ch; }
+
+/* Audience columns */
+.section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+.section-head h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+.section-head p { color: var(--muted); font-size: 14px; }
+
+.who { border-top: 1px solid var(--line); }
+.cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+@media (max-width: 860px) { .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .cols { grid-template-columns: 1fr; } }
+.col { padding: 22px 20px 24px; display: flex; flex-direction: column; gap: 10px; border-right: 1px solid var(--line); min-width: 0; }
+.col:last-child { border-right: 0; }
+@media (max-width: 860px) {
+  .col { border-bottom: 1px solid var(--line); }
+  .col:nth-child(2n) { border-right: 0; }
+  .col:nth-last-child(-n+2) { border-bottom: 0; }
+}
+@media (max-width: 480px) {
+  .col { border-right: 0; border-bottom: 1px solid var(--line); }
+  .col:nth-last-child(2) { border-bottom: 1px solid var(--line); }
+  .col:last-child { border-bottom: 0; }
+}
+.scale { display: flex; gap: 3px; height: 14px; align-items: flex-end; }
+.scale i { width: 6px; border-radius: 2px; background: var(--line); }
+.scale i:nth-child(1) { height: 5px; } .scale i:nth-child(2) { height: 8px; } .scale i:nth-child(3) { height: 11px; } .scale i:nth-child(4) { height: 14px; }
+.scale i.on { background: var(--teal); }
+.col h3 { font-size: 18px; font-weight: 700; }
+.col .plan { font: 600 11px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--teal); margin-top: 4px; }
+.price { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--line); display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 4px; font-variant-numeric: tabular-nums; }
+.price strong { font: 800 24px/1 var(--display); letter-spacing: -0.01em; }
+.price span { font-size: 12.5px; color: var(--muted); }
+.price .from { width: 100%; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+.price small { width: 100%; font-size: 12px; color: var(--muted); margin-top: 4px; }
+.col ul { margin: 2px 0 6px; padding: 0; list-style: none; display: grid; gap: 7px; font-size: 13.5px; }
+.col li { padding-left: 16px; position: relative; }
+.col li::before { content: ""; position: absolute; left: 0; top: .62em; width: 7px; height: 2px; background: var(--teal); border-radius: 1px; }
+
+/* Client path rail */
+.path { background: var(--tint); border-block: 1px solid var(--line); }
+.rail { overflow-x: auto; margin-inline: -4px; padding: 4px; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(118px, 1fr)); min-width: 720px; position: relative; }
+.steps::before { content: ""; position: absolute; left: 16px; right: calc(100% / 6 - 16px); top: 15px; height: 2px; background: var(--line); }
+.step { position: relative; padding-right: 14px; display: flex; flex-direction: column; gap: 6px; }
+.dot { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--sheet); border: 2px solid var(--line); font: 700 13px/1 var(--display); color: var(--muted); position: relative; font-variant-numeric: tabular-nums; }
+.step.key .dot { background: var(--teal); border-color: var(--teal); color: var(--on-teal); }
+.step h3 { font-size: 15px; font-weight: 700; margin-top: 8px; }
+.step p { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+@media (max-width: 640px) {
+  .steps { grid-template-columns: 1fr; min-width: 0; gap: 20px; }
+  .steps::before { left: 15px; right: auto; width: 2px; height: auto; top: 16px; bottom: 16px; }
+  .step { padding: 0 0 0 48px; }
+  .dot { position: absolute; left: 0; top: 0; }
+  .step h3 { margin-top: 6px; }
+}
+.step .flag { font: 600 10.5px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--teal); }
+
+/* Spotlight: leads, contracts, templates */
+.spot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+@media (max-width: 760px) { .spot { grid-template-columns: 1fr; gap: 22px; } }
+.feat { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.feat h3 { font-size: 19px; font-weight: 700; }
+.feat > p { color: var(--muted); font-size: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.chip { font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 999px; background: var(--teal-soft); color: var(--ink); }
+.feat.templates .chip { background: var(--peach); }
+.mock.contract p { font-size: 12.5px; line-height: 1.7; color: var(--muted); }
+.mock.contract b { font: 500 11.5px/1 ui-monospace, "SF Mono", Menlo, monospace; color: var(--teal); background: var(--teal-soft); padding: 2px 5px; border-radius: 4px; white-space: nowrap; }
+
+/* Lead card mock */
+.mock { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: 12.5px; display: grid; gap: 8px; background: var(--sheet); }
+.mock .row { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.mock .name { font-weight: 600; }
+.mock .sub { color: var(--muted); font-size: 11.5px; }
+.pill { font-size: 10.5px; font-weight: 600; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.new { background: var(--teal-soft); color: var(--teal); }
+.pill.due { background: var(--peach); color: var(--coral); }
+.pill.ok { background: var(--teal); color: var(--on-teal); }
+
+/* Proof strip + footer */
+.proof { border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 13.5px; font-weight: 500; }
+.proof span { display: inline-flex; align-items: center; gap: 8px; }
+.proof span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+.foot { background: var(--teal); color: var(--on-teal); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.foot h2 { font-size: 22px; font-weight: 700; }
+.foot p { opacity: .85; font-size: 14px; margin-top: 4px; }
+.foot .links { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { display: inline-block; text-decoration: none; font-weight: 600; font-size: 14px; padding: 11px 20px; border-radius: 999px; background: var(--on-teal); color: var(--teal); }
+.btn.ghost { background: transparent; color: var(--on-teal); box-shadow: inset 0 0 0 1.5px var(--on-teal); }
+.btn:focus-visible { outline: 2px solid var(--on-teal); outline-offset: 3px; }
+</style>
+
+<main class="sheet">
+  <section class="pad">
+    <div class="top">
+      <img src="data:image/png;base64,__WORDMARK__" alt="Doulio">
+      <span class="eyebrow">Platform overview</span>
+    </div>
+    <div class="hero">
+      <h1>Doula care that runs smoothly, <em>at every size.</em></h1>
+      <p class="lede">Doulio is one connected platform for independent doulas, teams, agencies, organizations and multi-site enterprises. Take in leads, send contracts, document care, get paid and report from one place.</p>
+    </div>
+  </section>
+
+  <section class="pad who" aria-labelledby="who-h">
+    <div class="section-head">
+      <h2 id="who-h">Built for the way you work</h2>
+      <p>Start solo and grow. Your clients, records and credentials come with you.</p>
+    </div>
+    <div class="cols">
+      <article class="col">
+        <div class="scale" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+        <p class="plan">Doulio PRO</p>
+        <h3>Independent doulas</h3>
+        <ul>
+          <li>Your own private practice: clients, DOCS and income</li>
+          <li>Public page in the Doulio directory</li>
+          <li>Insurance billing, invoices and card payments</li>
+          <li>Complimentary business support</li>
+        </ul>
+        <div class="price"><strong>$39</strong><span>/month</span><small>or $390/year, two months free</small></div>
+      </article>
+      <article class="col">
+        <div class="scale" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></div>
+        <p class="plan">Doulio PRO + seats</p>
+        <h3>Teams</h3>
+        <ul>
+          <li>Add up to 4 doulas, a team of 5 in all</li>
+          <li>Teammates work in every client's record</li>
+          <li>One lead list, calendar and template set</li>
+          <li>Backup coverage with other PRO doulas</li>
+        </ul>
+        <div class="price"><strong>+$9.99</strong><span>/doula/month</span><small>or $99.90 per doula/year</small></div>
+      </article>
+      <article class="col">
+        <div class="scale" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+        <p class="plan">Doulio OS</p>
+        <h3>Agencies and organizations</h3>
+        <ul>
+          <li>Lead stages, website inquiry forms and proposals</li>
+          <li>Contractor agreements your doulas sign in Doulio</li>
+          <li>Shift scheduling, claims and reporting</li>
+          <li>Training and certification programs</li>
+        </ul>
+        <div class="price"><span class="from">From</span><strong>$3,000</strong><span>/year</span><small>billed yearly or monthly</small></div>
+      </article>
+      <article class="col">
+        <div class="scale" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+        <p class="plan">Doulio Enterprise</p>
+        <h3>Enterprises with sites</h3>
+        <ul>
+          <li>One enterprise, many sites, each with its own admin</li>
+          <li>Assign locked courses, programs and resources to every site</li>
+          <li>Credentials issued under the enterprise's name</li>
+          <li>Combined reports across sites, with CSV export</li>
+        </ul>
+        <div class="price"><strong>Custom</strong><small>priced by number of sites</small></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="pad path" aria-labelledby="path-h">
+    <div class="section-head">
+      <h2 id="path-h">One path from first inquiry to final review</h2>
+      <p>The same workflow at every size.</p>
+    </div>
+    <div class="rail">
+      <ol class="steps">
+        <li class="step key"><span class="dot">1</span><h3>Lead</h3><p>A family asks for a consult and lands in your lead list.</p><span class="flag">Leads</span></li>
+        <li class="step"><span class="dot">2</span><h3>Consult</h3><p>Follow-up reminders and your own consult form.</p></li>
+        <li class="step key"><span class="dot">3</span><h3>Proposal</h3><p>Package, contract and deposit. The family signs and pays.</p><span class="flag">Contracts</span></li>
+        <li class="step"><span class="dot">4</span><h3>Care</h3><p>Visits, DOCS, notes and the client app.</p></li>
+        <li class="step"><span class="dot">5</span><h3>Get paid</h3><p>Bill insurance, or collect by card on a payment schedule.</p></li>
+        <li class="step"><span class="dot">6</span><h3>Review</h3><p>A verified review and reports that show growth.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="pad" aria-labelledby="spot-h">
+    <div class="section-head">
+      <h2 id="spot-h">Leads, contracts and templates, built in</h2>
+    </div>
+    <div class="spot">
+      <div class="feat">
+        <span class="eyebrow">Leads</span>
+        <h3>Never lose an inquiry</h3>
+        <p>Directory requests, consult forms and your own website inquiry form all land in one lead list. Move leads through your stages and convert to a client in one step.</p>
+        <div class="mock" aria-hidden="true">
+          <div class="row"><div><div class="name">Jasmine T.</div><div class="sub">Due Mar 14 · Website form</div></div><span class="pill new">New</span></div>
+          <div class="row"><div><div class="name">Maria &amp; Dev K.</div><div class="sub">Consult booked Thu</div></div><span class="pill due">Follow up</span></div>
+          <div class="row"><div><div class="name">Aisha R.</div><div class="sub">Proposal sent</div></div><span class="pill ok">Signed</span></div>
+        </div>
+      </div>
+      <div class="feat">
+        <span class="eyebrow">Contracts</span>
+        <h3>Proposal, contract and deposit in one link</h3>
+        <p>Send a family their package, contract and deposit as one private link. They sign, pay and become a client, and the signed PDF files itself in their documents.</p>
+        <div class="mock contract" aria-hidden="true">
+          <div class="sub">Birth doula agreement</div>
+          <p>This agreement between <b>{{family_name}}</b> and <b>{{organization_name}}</b> covers the <b>{{package_name}}</b> for a due date of <b>{{due_date}}</b>. Deposit due at signing: <b>{{deposit_amount}}</b>.</p>
+        </div>
+      </div>
+      <div class="feat templates">
+        <span class="eyebrow">Templates</span>
+        <h3>A library to start from</h3>
+        <p>Copy ready-made templates from the Doulio agreement library, edit them as yours, and Doulio fills in each family's details. Organizations also send doulas agreements to sign and countersign.</p>
+        <div class="chips">
+          <span class="chip">Client contracts</span>
+          <span class="chip">Independent contractor agreements</span>
+          <span class="chip">Doula service agreements</span>
+          <span class="chip">Consult forms</span>
+          <span class="chip">Website inquiry forms</span>
+          <span class="chip">DOCS forms</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad proof" aria-label="Across the platform">
+    <span>HIPAA compliant</span>
+    <span>Insurance billing</span>
+    <span>Card payments through Stripe</span>
+    <span>Client app for iPhone and Android</span>
+    <span>Training and certification</span>
+  </section>
+
+  <section class="pad foot">
+    <div>
+      <h2>See Doulio for your practice or program</h2>
+      <p>doulio.org · pro.doulio.org · Prices in US dollars; sales tax added where it applies.</p>
+    </div>
+    <div class="links">
+      <a class="btn" href="https://scheduler.zoom.us/doulio-inc/book-a-demo">Book a demo</a>
+      <a class="btn ghost" href="https://pro.doulio.org">Get Doulio PRO</a>
+    </div>
+  </section>
+</main>
