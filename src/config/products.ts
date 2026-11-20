@@ -4,7 +4,7 @@
  * (and PRO's with Stripe, see `PLANS` in ./pro).
  */
 
-export type ProductId = "pro" | "team" | "os" | "enterprise";
+export type ProductId = "pro" | "team" | "os" | "os_lms" | "enterprise";
 
 export type Product = {
   id: ProductId;
@@ -62,13 +62,28 @@ export const PRODUCTS: Record<ProductId, Product> = {
     name: "Doulio OS",
     audience: "Agencies and organizations",
     price: "From $3,000",
-    period: "/year",
-    priceNote: "billed yearly or monthly",
+    period: "/year license",
+    priceNote: "License can be billed yearly or monthly",
     features: [
       "Lead stages, website inquiry forms and proposals",
       "Contractor agreements your doulas sign in Doulio",
       "Shift scheduling, claims and reporting",
-      "Training and certification programs",
+      "Add the LMS for training and certification",
+    ],
+    action: "book_demo",
+  },
+  os_lms: {
+    id: "os_lms",
+    name: "Doulio OS + LMS",
+    audience: "Organizations that train doulas",
+    price: "$5,000",
+    period: "/year license",
+    priceNote: "License can be billed yearly or monthly",
+    features: [
+      "Everything in Doulio OS",
+      "Your own courses and training programs for your doulas",
+      "Track each doula's progress and completions",
+      "Issue certificates when training is complete",
     ],
     action: "book_demo",
   },
@@ -89,7 +104,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
   },
 };
 
-export const PRODUCT_ORDER: ProductId[] = ["pro", "team", "os", "enterprise"];
+export const PRODUCT_ORDER: ProductId[] = ["pro", "team", "os", "os_lms", "enterprise"];
 
 /** The finder's first question: "Which sounds most like you?" */
 export type WorkStyle =
@@ -139,9 +154,10 @@ export type Recommendation =
 
 /**
  * Picks a plan. `teamSize` (doulas including you) only matters for "team": up to
- * MAX_TEAM_SIZE fits PRO + Seats; a bigger group needs Doulio OS.
+ * MAX_TEAM_SIZE fits PRO + Seats; a bigger group needs Doulio OS. `trainsDoulas` only matters
+ * for "organization": an organization that trains or certifies doulas gets Doulio OS + LMS.
  */
-export function recommend(style: WorkStyle, teamSize = 2): Recommendation {
+export function recommend(style: WorkStyle, teamSize = 2, trainsDoulas = false): Recommendation {
   switch (style) {
     case "solo":
     case "org_member":
@@ -151,7 +167,7 @@ export function recommend(style: WorkStyle, teamSize = 2): Recommendation {
         ? { kind: "product", product: "team", teamSize }
         : { kind: "product", product: "os" };
     case "organization":
-      return { kind: "product", product: "os" };
+      return { kind: "product", product: trainsDoulas ? "os_lms" : "os" };
     case "multisite":
       return { kind: "product", product: "enterprise" };
     case "not_a_doula":

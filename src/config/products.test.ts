@@ -21,6 +21,11 @@ describe("recommend", () => {
     expect(recommend("organization")).toEqual({ kind: "product", product: "os" });
   });
 
+  it("sends organizations that train doulas to Doulio OS + LMS", () => {
+    expect(recommend("organization", 2, true)).toEqual({ kind: "product", product: "os_lms" });
+    expect(recommend("organization", 2, false)).toEqual({ kind: "product", product: "os" });
+  });
+
   it("sends multisite organizations to Enterprise", () => {
     expect(recommend("multisite")).toEqual({ kind: "product", product: "enterprise" });
   });
@@ -52,6 +57,7 @@ describe("PRODUCTS", () => {
     expect(PRODUCTS.pro.action).toBe("get_pro");
     expect(PRODUCTS.team.action).toBe("get_pro");
     expect(PRODUCTS.os.action).toBe("book_demo");
+    expect(PRODUCTS.os_lms.action).toBe("book_demo");
     expect(PRODUCTS.enterprise.action).toBe("book_demo");
   });
 });

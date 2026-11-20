@@ -52,18 +52,19 @@ function Check({ className = "" }: { className?: string }) {
 export function FitFinder() {
   const [style, setStyle] = useState<WorkStyle | null>(null);
   const [teamSize, setTeamSize] = useState(3);
+  const [trainsDoulas, setTrainsDoulas] = useState(false);
   /** Set when the visitor taps another plan to compare; cleared by a new answer. */
   const [viewing, setViewing] = useState<ProductId | null>(null);
   const resultRef = useRef<HTMLDivElement>(null);
 
-  const recommendation = style ? recommend(style, teamSize) : null;
+  const recommendation = style ? recommend(style, teamSize, trainsDoulas) : null;
   const recommended = recommendation?.kind === "product" ? recommendation.product : null;
   const shown = viewing ?? recommended;
 
   function choose(next: WorkStyle) {
     setStyle(next);
     setViewing(null);
-    const result = recommend(next, teamSize);
+    const result = recommend(next, teamSize, trainsDoulas);
     trackEvent("fit_finder_answered", {
       style: next,
       result: result.kind === "product" ? result.product : result.kind,
@@ -84,6 +85,16 @@ export function FitFinder() {
       style: "team",
       team_size: next,
       result: result.kind === "product" ? result.product : result.kind,
+    });
+  }
+
+  function changeTrainsDoulas(next: boolean) {
+    setTrainsDoulas(next);
+    setViewing(null);
+    trackEvent("fit_finder_answered", {
+      style: "organization",
+      trains_doulas: next,
+      result: next ? "os_lms" : "os",
     });
   }
 
@@ -160,6 +171,9 @@ export function FitFinder() {
                 {style === "team" && (
                   <TeamSizeStepper value={teamSize} onChange={changeTeamSize} />
                 )}
+                {style === "organization" && (
+                  <TrainingQuestion value={trainsDoulas} onChange={changeTrainsDoulas} />
+                )}
 
                 <ProductResult
                   id={shown}
@@ -235,15 +249,15 @@ function Overview() {
   );
 }
 
-/** Four rising bars, filled up to `level`, as on the Platform Overview. */
+/** Rising bars, filled up to `level`, as on the Platform Overview. */
 function SizeBars({ level }: { level: number }) {
   return (
     <span aria-hidden="true" className="flex h-5 items-end gap-0.5">
-      {[1, 2, 3, 4].map((bar) => (
+      {PRODUCT_ORDER.map((_, i) => i + 1).map((bar) => (
         <span
           key={bar}
           className={`w-1.5 rounded-sm ${bar <= level ? "bg-teal-dark" : "bg-slate-200"}`}
-          style={{ height: `${30 + bar * 17}%` }}
+          style={{ height: `${20 + bar * 16}%` }}
         />
       ))}
     </span>
@@ -283,6 +297,29 @@ function TeamSizeStepper({ value, onChange }: { value: number; onChange: (n: num
           aria-label="One more doula"
         >
           +
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/** For organizations: training or certifying doulas calls for Doulio OS + LMS. */
+function TrainingQuestion({ value, onChange }: { value: boolean; onChange: (v: boolean) => void }) {
+  const option = (selected: boolean) =>
+    `flex-1 rounded-full px-4 py-2.5 text-center font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink ${
+      selected ? "bg-slate-900 text-white" : "bg-white text-slate-700 hover:bg-slate-100"
+    }`;
+  return (
+    <div className="mb-8 rounded-2xl bg-[#f5f7f7] p-5">
+      <p id="trains-label" className="font-medium text-slate-900">
+        Do you train or certify doulas?
+      </p>
+      <div role="group" aria-labelledby="trains-label" className="mt-3 flex gap-2">
+        <button type="button" className={option(value)} aria-pressed={value} onClick={() => onChange(true)}>
+          Yes
+        </button>
+        <button type="button" className={option(!value)} aria-pressed={!value} onClick={() => onChange(false)}>
+          No
         </button>
       </div>
     </div>
