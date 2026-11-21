@@ -19,6 +19,12 @@ export function getProUrl(plan?: ProPlan): string {
 export const SIGN_IN_URL = new URL("/", APP_URL).toString();
 
 /** Must match the Stripe prices (doulio-api STRIPE_PRICE_MONTHLY / STRIPE_PRICE_YEARLY). */
+export const PRICE_MONTHLY = 39;
+export const PRICE_YEARLY = 390;
+
+/** What the yearly plan works out to per month, e.g. "$32.50". */
+export const YEARLY_PER_MONTH = `$${(PRICE_YEARLY / 12).toFixed(2)}`;
+
 export const PLANS: Array<{
   plan: ProPlan;
   name: string;
@@ -26,11 +32,11 @@ export const PLANS: Array<{
   period: string;
   note: string;
 }> = [
-  { plan: "monthly", name: "Monthly", price: "$39", period: "per month", note: "Cancel anytime" },
+  { plan: "monthly", name: "Monthly", price: `$${PRICE_MONTHLY}`, period: "per month", note: "Cancel anytime" },
   {
     plan: "yearly",
     name: "Yearly",
-    price: "$390",
+    price: `$${PRICE_YEARLY}`,
     period: "per year",
     note: "Two months free compared with monthly",
   },

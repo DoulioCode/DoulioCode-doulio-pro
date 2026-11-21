@@ -41,17 +41,17 @@ export function BecomeADoula() {
     <section
       id="become-a-doula"
       aria-labelledby="become-a-doula-heading"
-      className="scroll-mt-24 bg-white px-4 pb-24 sm:px-6 sm:pb-32"
+      className="scroll-mt-24 px-4 pb-20 sm:px-6 sm:pb-24"
     >
       <div className="mx-auto max-w-4xl rounded-3xl bg-[radial-gradient(600px_300px_at_0%_0%,theme(colors.mint),transparent_70%),radial-gradient(600px_300px_at_100%_100%,theme(colors.pro.violet-soft),transparent_70%)] px-6 py-12 text-center sm:px-12 sm:py-16">
         <p className="font-display text-lg font-semibold text-teal-dark">Not a doula yet?</p>
         <h2
           id="become-a-doula-heading"
-          className="mx-auto mt-3 max-w-2xl text-balance font-display text-3xl font-semibold tracking-tight text-slate-900 sm:text-5xl"
+          className="mx-auto mt-3 max-w-2xl text-balance font-display text-3xl font-semibold tracking-tight text-ink sm:text-5xl"
         >
           Looking to become a doula?
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-balance text-lg text-slate-600 sm:text-xl">
+        <p className="mx-auto mt-5 max-w-2xl text-balance text-lg text-ink-body sm:text-xl">
           Doulio PRO is for practicing doulas. If you’re hoping to become one, Doulio offers birth
           and postpartum doula trainings led by practicing doulas. Start there, and come back to
           PRO when you’re ready to take clients.

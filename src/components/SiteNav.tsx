@@ -1,96 +1,66 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Wordmark } from "@/components/Wordmark";
-import { BOOK_DEMO_URL, NAV_LINKS, SITE_URL } from "@/config/site";
+import { GetProLink } from "@/components/GetProLink";
+import { PRIMARY_BUTTON_SMALL } from "@/components/styles";
+import { BOOK_DEMO_URL, PAGE_LINKS, SITE_URL } from "@/config/site";
 import { trackEvent } from "@/lib/analytics";
 
-/** Hides the bar while scrolling down and brings it back on scroll up. */
-function useHideOnScrollDown() {
-  const [hidden, setHidden] = useState(false);
-  const lastY = useRef(0);
+const LINK =
+  "whitespace-nowrap rounded-full text-[15px] text-ink-soft transition hover:text-teal-deep focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-deep focus-visible:ring-offset-2";
 
-  useEffect(() => {
-    lastY.current = window.scrollY;
-    let frame = 0;
-
-    const onScroll = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(() => {
-        frame = 0;
-        const y = window.scrollY;
-        const delta = y - lastY.current;
-        // Ignore small jitter, and always show the bar near the top of the page.
-        if (Math.abs(delta) > 8) {
-          setHidden(y > 120 && delta > 0);
-          lastY.current = y;
-        }
-      });
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (frame) window.cancelAnimationFrame(frame);
-    };
-  }, []);
-
-  return hidden;
-}
-
-/** Pill-shaped sticky nav matching doulio.org. Links point back to the main site. */
+/**
+ * Pill-shaped sticky nav. Its links stay on this page and "Get Doulio PRO" is always in
+ * reach; the wordmark goes back to doulio.org, whose own links are in the footer.
+ */
 export function SiteNav() {
   const [open, setOpen] = useState(false);
-  const scrolledPastNav = useHideOnScrollDown();
-  // Keep the bar in place whenever the mobile menu is open.
-  const hidden = scrolledPastNav && !open;
 
   return (
-    <header
-      className={`sticky top-0 z-50 px-4 pt-4 transition-transform duration-300 motion-reduce:transition-none sm:px-6 ${
-        hidden ? "-translate-y-[130%]" : "translate-y-0"
-      }`}
-    >
+    <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6">
       <nav
         aria-label="Main"
-        className="mx-auto max-w-6xl rounded-[40px] bg-white/95 px-4 py-2 shadow-[0_7px_29px_rgba(0,0,0,0.12)] backdrop-blur sm:px-4"
+        className="mx-auto max-w-6xl rounded-[2rem] border border-warm-line bg-white/95 py-2 pl-5 pr-2.5 shadow-[0_6px_24px_rgba(18,41,43,0.08)] backdrop-blur"
       >
         <div className="flex items-center justify-between gap-4">
           <a
             href={SITE_URL}
-            className="shrink-0 rounded-full px-1 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2"
+            className="shrink-0 rounded-full py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2"
           >
             <Wordmark className="h-7 w-auto" />
             <span className="sr-only">Doulio home</span>
           </a>
 
-          <ul className="hidden items-center gap-4 xl:flex">
-            {NAV_LINKS.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="whitespace-nowrap rounded-full text-sm text-slate-700 transition hover:text-teal-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2"
-                >
+          <ul className="hidden items-center gap-7 lg:flex">
+            {PAGE_LINKS.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className={LINK}>
                   {link.label}
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href={BOOK_DEMO_URL}
+                onClick={() => trackEvent("book_demo_clicked", { location: "nav" })}
+                className={LINK}
+              >
+                Book a demo
+              </a>
+            </li>
           </ul>
 
-          <div className="flex items-center gap-2">
-            <a
-              href={BOOK_DEMO_URL}
-              onClick={() => trackEvent("book_demo_clicked", { location: "nav" })}
-              className="hidden whitespace-nowrap rounded-full bg-teal px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark focus-visible:ring-offset-2 sm:inline-block"
-            >
-              Book a Demo
-            </a>
+          <div className="flex items-center gap-1.5">
+            <GetProLink location="nav" className={PRIMARY_BUTTON_SMALL}>
+              Get Doulio PRO
+            </GetProLink>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="mobile-nav"
-              className="rounded-full p-3 text-slate-700 transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark focus-visible:ring-offset-2 xl:hidden"
+              className="rounded-full p-3 text-ink-soft transition hover:bg-warm-sand focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-deep focus-visible:ring-offset-2 lg:hidden"
             >
               <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
               <svg
@@ -102,34 +72,32 @@ export function SiteNav() {
                 strokeLinecap="round"
                 className="h-5 w-5"
               >
-                {open ? (
-                  <path d="M5 5l10 10M15 5L5 15" />
-                ) : (
-                  <path d="M3 6h14M3 10h14M3 14h14" />
-                )}
+                {open ? <path d="M5 5l10 10M15 5L5 15" /> : <path d="M3 6h14M3 10h14M3 14h14" />}
               </svg>
             </button>
           </div>
         </div>
 
         {open && (
-          <ul id="mobile-nav" className="mt-2 space-y-1 border-t border-slate-100 pt-3 xl:hidden">
-            {NAV_LINKS.map((link) => (
-              <li key={link.label}>
+          <ul id="mobile-nav" className="mt-2 space-y-1 border-t border-warm-line pb-2 pr-2.5 pt-3 lg:hidden">
+            {PAGE_LINKS.map((link) => (
+              <li key={link.href}>
                 <a
                   href={link.href}
-                  className="block rounded-xl px-2 py-2.5 text-slate-700 transition hover:bg-mint/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark"
+                  onClick={() => setOpen(false)}
+                  className="block rounded-xl px-2 py-2.5 text-ink-soft transition hover:bg-mint/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-deep"
                 >
                   {link.label}
                 </a>
               </li>
             ))}
-            <li className="pt-1 sm:hidden">
+            <li>
               <a
                 href={BOOK_DEMO_URL}
-                className="block rounded-full bg-teal px-6 py-3 text-center font-semibold text-white transition hover:bg-teal-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark focus-visible:ring-offset-2"
+                onClick={() => trackEvent("book_demo_clicked", { location: "nav" })}
+                className="block rounded-xl px-2 py-2.5 text-ink-soft transition hover:bg-mint/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-deep"
               >
-                Book a Demo
+                Book a demo
               </a>
             </li>
           </ul>

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-white font-sans text-slate-900 antialiased;
+  @apply bg-warm font-sans text-ink antialiased;
 }
 
 h1,

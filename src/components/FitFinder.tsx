@@ -20,9 +20,9 @@ import { BecomeADoulaLink } from "@/components/BecomeADoula";
 import { GRADIENT_TEXT } from "@/components/styles";
 
 const HEADING =
-  "text-balance font-display text-4xl font-semibold tracking-tight text-slate-900 sm:text-6xl";
+  "text-balance font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl";
 const BUTTON =
-  "inline-block rounded-full bg-gradient-to-r from-pro-pink to-pro-violet px-8 py-3.5 text-center text-lg font-semibold text-white shadow-lg shadow-pro-pink/25 transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink focus-visible:ring-offset-2";
+  "inline-block rounded-full bg-gradient-to-r from-pro-pink-btn to-pro-violet-btn px-8 py-3.5 text-center text-lg font-semibold text-white shadow-lg shadow-pro-pink/25 transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink focus-visible:ring-offset-2";
 const LOCATION = "fit-finder";
 /** The stepper's top value stands for "6 or more", which is past a PRO team. */
 const STEPPER_MAX = MAX_TEAM_SIZE + 1;
@@ -102,11 +102,11 @@ export function FitFinder() {
     <section
       id="find-your-fit"
       aria-labelledby="fit-heading"
-      className="scroll-mt-24 bg-[#f5f7f7] px-4 py-24 sm:px-6 sm:py-32"
+      className="scroll-mt-24 px-4 py-20 sm:px-6 sm:py-24"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-display text-lg font-semibold text-pro-pink">Find your fit</p>
+          <p className="font-display text-[17px] font-semibold text-pro-pink-deep">Find your fit</p>
           <h2 id="fit-heading" className={`mt-3 ${HEADING}`}>
             Is PRO <span className={GRADIENT_TEXT}>right for you?</span>
           </h2>

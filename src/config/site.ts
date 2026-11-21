@@ -3,7 +3,16 @@ export const SITE_URL = "https://www.doulio.org";
 
 export const BOOK_DEMO_URL = "https://scheduler.zoom.us/doulio-inc/book-a-demo";
 
-/** Mirrors the doulio.org top nav. */
+/** The PRO page's own nav: links to its sections, so visitors stay on the page. */
+export const PAGE_LINKS = [
+  { label: "Tour", href: "#see-it" },
+  { label: "Features", href: "#features" },
+  { label: "Stories", href: "#stories" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "FAQ", href: "#faq" },
+];
+
+/** The doulio.org top nav, used for the footer links. */
 export const NAV_LINKS = [
   { label: "Home", href: `${SITE_URL}/` },
   { label: "About Us", href: `${SITE_URL}/aboutus` },

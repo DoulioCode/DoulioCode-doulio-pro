@@ -1,15 +1,9 @@
 "use client";
 
-import { CLIENT_APP_FEATURES, GROWTH_STEPS, SUPPORT_TOPICS } from "@/config/content";
+import { GROWTH_STEPS, SUPPORT_TOPICS } from "@/config/content";
 import { APP_STORE_URL, BUSINESS_SUPPORT_URL, GOOGLE_PLAY_URL } from "@/config/site";
 import { trackEvent } from "@/lib/analytics";
-import { ClientAppPhone } from "@/components/ProductShowcase";
-import { GRADIENT_TEXT } from "@/components/styles";
-
-const HEADING =
-  "text-balance font-display text-4xl font-semibold tracking-tight text-slate-900 sm:text-6xl";
-const EYEBROW = "font-display text-lg font-semibold text-pro-pink";
-const LEAD = "text-balance text-xl text-slate-500 sm:text-2xl";
+import { EYEBROW, GRADIENT_TEXT, HEADING, LEAD } from "@/components/styles";
 
 /**
  * "Book complimentary business support": a dark pill inside a slowly turning PRO-colored
@@ -28,7 +22,7 @@ export function BookSupportButton({
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackEvent("business_support_clicked", { location })}
-      className={`group relative inline-flex rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink focus-visible:ring-offset-4 ${className}`}
+      className={`group relative inline-flex rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink-btn focus-visible:ring-offset-4 ${className}`}
     >
       <span
         aria-hidden="true"
@@ -82,77 +76,51 @@ export function BookSupportButton({
   );
 }
 
-const TOPIC_COLORS = ["text-pro-pink", "text-pro-violet", "text-pro-sky", "text-pro-orange"];
-
-/** The highlighted complimentary business support section, dark so it stands out from the page. */
+/** Complimentary business support: the dark panel that closes the product tiles. */
 export function BusinessSupport() {
   return (
-    <section
+    <div
       id="business-support"
       aria-labelledby="support-heading"
-      className="scroll-mt-24 bg-white px-4 py-12 sm:px-6 sm:py-16"
+      role="region"
+      className="grid scroll-mt-24 items-center gap-10 rounded-[2rem] bg-ink px-6 py-10 text-white sm:px-11 sm:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]"
     >
-      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] bg-slate-950 px-6 py-14 text-white sm:px-12 sm:py-20">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(600px_320px_at_0%_0%,rgba(235,45,147,0.35),transparent_70%),radial-gradient(600px_360px_at_100%_100%,rgba(130,77,255,0.35),transparent_70%)]"
-        />
-        <div className="relative grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-          <div className="text-center lg:text-left">
-            <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-pink-200">
-              <span aria-hidden="true" className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pro-pink opacity-75 motion-reduce:animate-none" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-pro-pink" />
-              </span>
-              Complimentary with every PRO plan
-            </p>
-            <h2
-              id="support-heading"
-              className="mt-6 text-balance font-display text-4xl font-semibold tracking-tight sm:text-6xl"
-            >
-              You don&apos;t have to build it{" "}
-              <span className="bg-gradient-to-r from-pink-300 via-violet-300 to-sky-300 bg-clip-text text-transparent">
-                alone.
-              </span>
-            </h2>
-            <p className="mt-5 text-balance text-xl text-slate-300 sm:text-2xl">
-              Every PRO doula gets complimentary business support from the Doulio team. Book a
-              session and get help with the parts of a doula business that are hardest to
-              figure out on your own.
-            </p>
-            <BookSupportButton location="support_section" className="mt-10" />
-          </div>
-          <ul className="grid gap-4 sm:grid-cols-2">
-            {SUPPORT_TOPICS.map((topic, index) => (
-              <li
-                key={topic.title}
-                className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur"
-              >
-                <span
-                  className={`font-display text-sm font-semibold uppercase tracking-wide ${TOPIC_COLORS[index % TOPIC_COLORS.length]}`}
-                >
-                  0{index + 1}
-                </span>
-                <h3 className="mt-2 font-display text-xl font-semibold tracking-tight sm:text-2xl">
-                  {topic.title}
-                </h3>
-                <p className="mt-2 text-slate-300">{topic.body}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div>
+        <p className="text-sm font-semibold uppercase tracking-wide text-green-soft">
+          Complimentary with every PRO plan
+        </p>
+        <h3
+          id="support-heading"
+          className="mt-2.5 text-balance font-display text-4xl font-semibold leading-[1.08] tracking-tight"
+        >
+          You don&apos;t have to build it alone.
+        </h3>
+        <p className="mt-3.5 text-pretty text-lg text-[#cfe3e1]">
+          Every PRO doula gets complimentary business support from the Doulio team. Book a
+          session and get help with the parts of a doula business that are hardest to figure
+          out on your own.
+        </p>
+        <BookSupportButton location="support_section" className="mt-8" />
       </div>
-    </section>
+      <ul className="grid gap-3.5 sm:grid-cols-2">
+        {SUPPORT_TOPICS.map((topic) => (
+          <li key={topic.title} className="rounded-[1.25rem] bg-ink-panel p-5">
+            <h4 className="font-display text-lg font-semibold">{topic.title}</h4>
+            <p className="mt-1.5 text-[15px] text-[#cfe3e1]">{topic.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
-const STEP_STYLES = [
-  { tint: "bg-pro-pink-soft", number: "from-pro-pink to-pro-violet" },
-  { tint: "bg-pro-violet-soft", number: "from-pro-violet to-pro-sky" },
-  { tint: "bg-pro-sky-soft", number: "from-pro-sky to-pro-green" },
-  { tint: "bg-pro-green-soft", number: "from-pro-green to-pro-sky" },
-  { tint: "bg-pro-orange-soft", number: "from-pro-orange to-pro-pink" },
-  { tint: "bg-pro-pink-soft", number: "from-pro-pink to-pro-orange" },
+const STEP_CHIPS = [
+  "bg-pro-pink-soft text-pro-pink-deep",
+  "bg-pro-violet-soft text-[#5a2fc4]",
+  "bg-pro-sky-soft text-[#0b5c99]",
+  "bg-pro-green-soft text-[#17663f]",
+  "bg-pro-orange-soft text-[#9a4208]",
+  "bg-pro-pink-soft text-pro-pink-deep",
 ];
 
 /** From first inquiry to review: the business PRO helps a doula build. */
@@ -161,46 +129,37 @@ export function GrowthJourney() {
     <section
       id="grow"
       aria-labelledby="grow-heading"
-      className="scroll-mt-24 bg-white px-4 py-24 sm:px-6 sm:py-32"
+      className="scroll-mt-24 bg-warm-sand px-4 py-20 sm:px-6 sm:py-24"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className={EYEBROW}>Grow your business</p>
-          <h2 id="grow-heading" className={`mt-3 ${HEADING}`}>
-            From first inquiry to <span className={GRADIENT_TEXT}>getting paid.</span>
-          </h2>
-          <p className={`mt-5 ${LEAD}`}>
+        <div className="grid items-end gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-12">
+          <div>
+            <p className={EYEBROW}>Grow your business</p>
+            <h2 id="grow-heading" className={`mt-2.5 ${HEADING}`}>
+              From first inquiry to <span className={GRADIENT_TEXT}>getting paid.</span>
+            </h2>
+          </div>
+          <p className={LEAD}>
             Everything a doula business runs on, from the first inquiry to the five-star
             review. In one place, from day one.
           </p>
         </div>
-        <ol className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {GROWTH_STEPS.map((step, index) => {
-            const style = STEP_STYLES[index % STEP_STYLES.length];
-            return (
-              <li key={step.title} className={`rounded-3xl p-8 ${style.tint}`}>
-                <span
-                  className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br font-display text-xl font-semibold text-white shadow-md ${style.number}`}
-                >
-                  {index + 1}
-                </span>
-                <h3 className="mt-5 font-display text-2xl font-semibold tracking-tight text-slate-900">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-lg text-slate-600">{step.body}</p>
-              </li>
-            );
-          })}
+        <ol className="mt-10 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+          {GROWTH_STEPS.map((step, index) => (
+            <li key={step.title} className="rounded-3xl bg-white p-6">
+              <span
+                aria-hidden="true"
+                className={`flex h-9 w-9 items-center justify-center rounded-full font-semibold ${STEP_CHIPS[index % STEP_CHIPS.length]}`}
+              >
+                {index + 1}
+              </span>
+              <h3 className="mt-4 font-display text-xl font-semibold tracking-tight text-ink">
+                {step.title}
+              </h3>
+              <p className="mt-1.5 text-ink-body">{step.body}</p>
+            </li>
+          ))}
         </ol>
-        <p className="mx-auto mt-12 max-w-2xl text-center text-lg text-slate-500">
-          Want a hand along the way?{" "}
-          <a
-            href="#business-support"
-            className="font-semibold text-pro-pink hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink"
-          >
-            Complimentary business support is included ›
-          </a>
-        </p>
       </div>
     </section>
   );
@@ -230,7 +189,7 @@ const BADGE =
 
 export function StoreBadges({ location }: { location: string }) {
   return (
-    <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
+    <div className="flex flex-wrap gap-3">
       <a
         href={APP_STORE_URL}
         target="_blank"
@@ -260,55 +219,5 @@ export function StoreBadges({ location }: { location: string }) {
         <span className="sr-only">(opens in a new tab)</span>
       </a>
     </div>
-  );
-}
-
-const APP_FEATURE_DOTS = ["bg-pro-pink", "bg-pro-violet", "bg-pro-sky", "bg-pro-orange"];
-
-/** The Doulio client app, with the real App Store and Google Play links. */
-export function ClientApp() {
-  return (
-    <section
-      id="client-app"
-      aria-labelledby="client-app-heading"
-      className="scroll-mt-24 bg-[radial-gradient(700px_420px_at_85%_30%,theme(colors.pro.sky-soft),transparent_70%),radial-gradient(700px_420px_at_10%_90%,theme(colors.pro.pink-soft),transparent_70%)] bg-[#f5f7f7] px-4 py-24 sm:px-6 sm:py-32"
-    >
-      <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-2">
-        <div className="text-center lg:text-left">
-          <p className={EYEBROW}>Client app</p>
-          <h2 id="client-app-heading" className={`mt-3 ${HEADING}`}>
-            Your clients get the Doulio app. <span className={GRADIENT_TEXT}>Free.</span>
-          </h2>
-          <p className={`mt-5 ${LEAD}`}>
-            Add a client and they get an invitation to the Doulio app on iPhone and
-            Android. Their care with you, in their pocket.
-          </p>
-          <ul className="mt-8 grid gap-4 text-left sm:grid-cols-2">
-            {CLIENT_APP_FEATURES.map((feature, index) => (
-              <li key={feature.title} className="rounded-2xl bg-white p-5 shadow-sm">
-                <p className="flex items-center gap-2 font-display text-lg font-semibold text-slate-900">
-                  <span
-                    aria-hidden="true"
-                    className={`h-2.5 w-2.5 rounded-full ${APP_FEATURE_DOTS[index % APP_FEATURE_DOTS.length]}`}
-                  />
-                  {feature.title}
-                </p>
-                <p className="mt-1 text-slate-500">{feature.body}</p>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-10">
-            <StoreBadges location="client_app" />
-          </div>
-          <p className="mt-4 text-sm text-slate-500">
-            &ldquo;Doulio: Doula Care&rdquo; · free for your clients · private and secure,
-            with Face ID or fingerprint sign-in
-          </p>
-        </div>
-        <div className="mx-auto w-full max-w-xs">
-          <ClientAppPhone />
-        </div>
-      </div>
-    </section>
   );
 }
