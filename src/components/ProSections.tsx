@@ -351,10 +351,7 @@ function PayoffCalculator({ children }: { children?: ReactNode }) {
         <span>${PAYOFF_MAX_RATE}</span>
       </div>
       <div className="mt-5 rounded-2xl bg-ink p-5 text-white" aria-live="polite">
-        <p className="text-sm font-semibold uppercase tracking-wide text-green-soft">
-          One visit covers
-        </p>
-        <p className="mt-1.5">
+        <p>
           <span className="font-display text-5xl font-semibold tracking-tight">{monthsLabel}</span>{" "}
           <span className="text-[#dcecea]">months of Doulio PRO</span>
         </p>
