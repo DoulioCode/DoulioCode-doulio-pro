@@ -138,7 +138,7 @@ export function FeatureTiles() {
                 body="Due dates, services, notes and DOCS progress, together for each family, so you always know who needs you next."
               />
             </div>
-            <div className="max-h-[21rem] overflow-hidden">
+            <div className="max-h-[27.5rem] overflow-hidden">
               <ClientsShot />
             </div>
           </article>
@@ -155,7 +155,7 @@ export function FeatureTiles() {
                 body="Clients served, births and outcomes over any period, with a PDF summary ready to share."
               />
             </div>
-            <div className="max-h-[21rem] overflow-hidden">
+            <div className="max-h-[27.5rem] overflow-hidden">
               <ReportsShot />
             </div>
           </article>
