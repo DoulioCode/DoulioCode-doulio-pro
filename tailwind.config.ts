@@ -20,12 +20,34 @@ const config: Config = {
           "sky-soft": "#dbf0ff",
           green: "#25935c",
           "green-soft": "#d7f4e6",
+          /* Deeper pink and violet: white text on them, and pink text on warm grounds, pass AA. */
+          "pink-deep": "#a3125f",
+          "pink-btn": "#d61f84",
+          "violet-btn": "#7a3ff2",
+        },
+        /* Warm page grounds and the deep-teal ink that sits on them. */
+        warm: {
+          DEFAULT: "#fdfaf6",
+          sand: "#f4efe8",
+          line: "#ece6dd",
+        },
+        ink: {
+          DEFAULT: "#12292b",
+          soft: "#22393b",
+          body: "#4b5f61",
+          muted: "#5d7173",
+          panel: "#1d3a3c",
+        },
+        tile: {
+          mint: "#d6f3ec",
+          peach: "#f7dccf",
         },
         mint: "#c2eee4",
         teal: {
           DEFAULT: "#62bbaf",
           mid: "#4cb2a6",
           dark: "#178488",
+          deep: "#0f6f73",
         },
         green: {
           soft: "#a0dbd0",

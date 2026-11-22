@@ -9,7 +9,9 @@ export type AnalyticsEventName =
   | "app_store_clicked"
   | "pro_video_interaction"
   | "become_doula_clicked"
-  | "fit_finder_answered";
+  | "fit_finder_answered"
+  | "pricing_period_selected"
+  | "payoff_calculator_used";
 
 type AnalyticsPayload = Record<string, unknown>;
 

@@ -1,156 +1,35 @@
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageViewTracker } from "@/components/PageViewTracker";
-import { GetProLink } from "@/components/GetProLink";
 import { ProVideo } from "@/components/ProVideo";
-import { BecomeADoula, BecomeADoulaLink } from "@/components/BecomeADoula";
+import { BecomeADoula } from "@/components/BecomeADoula";
 import { FitFinder } from "@/components/FitFinder";
-import { TRUST_POINTS } from "@/config/content";
-import {
-  ClaimsLaptop,
-  ClientsLaptop,
-  HeroDevices,
-  RecordDocsPhone,
-  ReportsLaptop,
-} from "@/components/ProductShowcase";
+import { Hero, TrustStrip } from "@/components/Hero";
 import {
   ClosingCta,
-  GRADIENT_TEXT,
   Faq,
-  HowItWorks,
+  FeatureTiles,
   MoreFeatures,
   Pricing,
-  PRIMARY_BUTTON,
-  Showcase,
-  Testimonial,
+  Testimonials,
 } from "@/components/ProSections";
-import {
-  BusinessSupport,
-  ClientApp,
-  GrowthJourney,
-} from "@/components/GrowthSections";
-
-const TRUST_DOTS = [
-  "bg-pro-green",
-  "bg-pro-violet",
-  "bg-pro-pink",
-  "bg-pro-sky",
-  "bg-pro-orange",
-];
+import { GrowthJourney } from "@/components/GrowthSections";
 
 export default function DoulioProPage() {
   return (
     <>
       <PageViewTracker />
       <SiteNav />
-      <main className="overflow-hidden bg-white">
-        {/* Hero */}
-        <section className="bg-[radial-gradient(900px_420px_at_10%_0%,theme(colors.pro.pink-soft),transparent_70%),radial-gradient(900px_460px_at_92%_8%,theme(colors.pro.sky-soft),transparent_70%),radial-gradient(800px_400px_at_50%_60%,theme(colors.pro.violet-soft),transparent_75%)] px-4 pb-24 pt-14 text-center sm:px-6 sm:pb-32 sm:pt-24">
-          <p className="font-display text-lg font-semibold text-pro-pink sm:text-xl">
-            Doulio PRO
-          </p>
-          <h1 className="mx-auto mt-4 max-w-5xl text-balance font-display text-5xl font-semibold leading-[1.04] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
-            Doula work,{" "}
-            <span className={GRADIENT_TEXT}>made easy.</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-balance text-xl text-slate-500 sm:text-2xl">
-            Your clients, paperwork and payments, including insurance, all in one
-            simple place. Spend less time on admin and more time with families, with
-            complimentary business support whenever you need it.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
-            <GetProLink location="hero" className={PRIMARY_BUTTON}>
-              Get Doulio PRO
-            </GetProLink>
-            <a
-              href="#pricing"
-              className="text-lg font-medium text-pro-pink hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-pro-pink"
-            >
-              From $32.50/mo billed yearly ›
-            </a>
-          </div>
-          <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2.5">
-            {TRUST_POINTS.map((point, index) => (
-              <li
-                key={point}
-                className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 sm:text-base"
-              >
-                <span
-                  aria-hidden="true"
-                  className={`h-2 w-2 rounded-full ${TRUST_DOTS[index % TRUST_DOTS.length]}`}
-                />
-                {point}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 text-base text-slate-500">
-            Not a doula yet?{" "}
-            <BecomeADoulaLink
-              location="hero"
-              destination="become_a_doula"
-              className="font-medium text-teal-dark hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark"
-            >
-              Learn how to become one ›
-            </BecomeADoulaLink>
-          </p>
-          <div className="mt-16 sm:mt-20">
-            <HeroDevices />
-          </div>
-        </section>
-
+      <main className="overflow-hidden">
+        <Hero />
+        <TrustStrip />
         <ProVideo />
-
-        <Showcase
-          id="insurance"
-          eyebrow="Insurance"
-          title="Check eligibility. Submit claims. Get reimbursed."
-          body="See a client's coverage in seconds, send claims to insurance from Doulio, and track every one until it's paid."
-          tone="gray"
-        >
-          <ClaimsLaptop />
-        </Showcase>
-
-        <Testimonial />
-
-        <BusinessSupport />
+        <FeatureTiles />
+        <Testimonials />
         <GrowthJourney />
-
-        <Showcase
-          id="clients"
-          eyebrow="Clients"
-          title="Every client. Every detail."
-          body="Due dates, services, notes and DOCS progress, together for each family, so you always know who needs you next."
-          tone="gray"
-        >
-          <ClientsLaptop />
-        </Showcase>
-
-        <Showcase
-          id="docs"
-          eyebrow="DOCS"
-          title="Record DOCS in a couple of taps."
-          body="Build your own intake and visit forms. Then record one for a client straight from your Clients list, on your laptop or your phone."
-          tone="white"
-          layout="split"
-        >
-          <RecordDocsPhone />
-        </Showcase>
-
-        <Showcase
-          id="reports"
-          eyebrow="Reports"
-          title="See the difference you make."
-          body="Clients served, births and outcomes over any period, with a PDF summary ready to share."
-          tone="gray"
-        >
-          <ReportsLaptop />
-        </Showcase>
-
-        <ClientApp />
         <MoreFeatures />
-        <HowItWorks />
-        <FitFinder />
         <Pricing />
+        <FitFinder />
         <BecomeADoula />
         <Faq />
         <ClosingCta />

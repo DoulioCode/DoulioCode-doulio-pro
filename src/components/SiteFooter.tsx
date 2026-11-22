@@ -9,7 +9,7 @@ const GET_IN_TOUCH = [
 
 export function SiteFooter() {
   return (
-    <footer className="mt-12 border-t border-slate-200 bg-white sm:mt-20">
+    <footer className="border-t border-warm-line bg-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]">
         <div className="sm:col-span-2 lg:col-span-1">
           <Wordmark className="h-7 w-auto" />

@@ -4,7 +4,14 @@
  * advertise roadmap items until they ship.
  */
 
-/** Trust points shown under the hero buttons. */
+/** The three reasons beside the hero button. */
+export const HERO_POINTS: string[] = [
+  "Bill insurance and track every claim until it is paid",
+  "Take card payments straight to your own Stripe",
+  "Complimentary business support from the Doulio team",
+];
+
+/** Trust points shown in the strip under the hero. */
 export const TRUST_POINTS: string[] = [
   "Insurance billing",
   "Card payments to your own Stripe",
@@ -110,6 +117,17 @@ export const MORE_FEATURES: Array<{ title: string; body: string }> = [
     title: "Your credentials go with you",
     body: "Your profile and credentials belong to you, in your practice and in any organization you work with.",
   },
+];
+
+/** What the one plan includes, on the pricing card. Each is a feature above, nothing new. */
+export const PLAN_INCLUDES: string[] = [
+  "Insurance billing",
+  "Clients and DOCS",
+  "Invoices and card payments",
+  "Public page and leads",
+  "Verified reviews and reports",
+  "The Doulio app for your clients",
+  "Complimentary business support",
 ];
 
 export const STEPS: Array<{ title: string; body: string }> = [

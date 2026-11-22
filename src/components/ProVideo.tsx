@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
-import { GRADIENT_TEXT } from "@/components/styles";
+import { EYEBROW, HEADING, LEAD } from "@/components/styles";
 
 const CONTROL_BUTTON =
   "inline-flex h-10 min-w-10 items-center justify-center gap-2 rounded-full bg-black/55 px-3 text-sm sm:h-11 sm:px-4 font-semibold text-white backdrop-blur transition hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900";
@@ -49,19 +49,19 @@ export function ProVideo() {
     <section
       id="see-it"
       aria-labelledby="see-it-heading"
-      className="scroll-mt-24 bg-white px-4 pb-4 pt-24 sm:px-6 sm:pt-32"
+      className="scroll-mt-24 px-4 pb-20 sm:px-6 sm:pb-24"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="font-display text-lg font-semibold text-pro-pink">See it in action</p>
-          <h2
-            id="see-it-heading"
-            className="mt-3 text-balance font-display text-4xl font-semibold tracking-tight text-slate-900 sm:text-6xl"
-          >
-            Step up <span className={GRADIENT_TEXT}>your practice.</span>
-          </h2>
+        <div className="grid items-end gap-4 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-12">
+          <div>
+            <p className={EYEBROW}>See it in action</p>
+            <h2 id="see-it-heading" className={`mt-2.5 ${HEADING}`}>
+              Step up your practice.
+            </h2>
+          </div>
+          <p className={LEAD}>A short tour of My Practice, from your client list to getting paid.</p>
         </div>
-        <div className="relative mt-12 overflow-hidden rounded-[2rem] bg-slate-950 shadow-2xl shadow-pro-violet/20 ring-1 ring-slate-900/10 sm:mt-16 sm:rounded-[2.5rem]">
+        <div className="relative mt-8 overflow-hidden rounded-[2rem] bg-slate-950 shadow-[0_30px_70px_rgba(18,41,43,0.22)]">
           <video
             ref={videoRef}
             className="block aspect-video h-auto w-full"

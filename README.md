@@ -14,7 +14,19 @@ npm run test
 npm run build
 ```
 
-- Page: `app/page.tsx` → sections in `src/components/ProSections.tsx`
+- Page: `app/page.tsx` → hero in `src/components/Hero.tsx`, sections in
+  `src/components/ProSections.tsx` and `GrowthSections.tsx`. Order: hero, trust strip, video,
+  product tiles (insurance, DOCS, clients, reports, client app, business support), testimonials,
+  growth steps, more features, pricing, plan finder, "Not a doula yet?", FAQ, closing.
+- Look: warm grounds (`warm`, `warm-sand`), deep-teal text (`ink`) and pastel tiles, in
+  `tailwind.config.ts`; shared type and button styles in `src/components/styles.ts`. The nav
+  mirrors the doulio.org menu (`NAV_LINKS` in `src/config/site.ts`, plus Log in and
+  Book a Demo) and adds "Get Doulio PRO".
+- Pricing: one card with a monthly/yearly switch (`pricing_period_selected`), and the
+  "PRO pays for itself" calculator beside it. The calculator (`src/config/payoff.ts`) only
+  divides the amount the visitor enters by the PRO prices; `PAYOFF_DEFAULT_RATE` is where the
+  slider starts, not a claim about what doulas are paid. It reports `payoff_calculator_used`
+  (rate) once the visitor settles on a value.
 - Copy (features, steps, FAQ): `src/config/content.ts` — list only features that exist today
 - Prices and links: `src/config/pro.ts` (`getProUrl`, `PLANS`); prices must match Stripe
 - `NEXT_PUBLIC_DOULIO_APP_URL` overrides the app address (e.g. `https://stage.doulio.org` for a
