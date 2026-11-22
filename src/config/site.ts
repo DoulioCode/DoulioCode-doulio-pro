@@ -4,13 +4,62 @@ export const SITE_URL = "https://www.doulio.org";
 export const BOOK_DEMO_URL = "https://scheduler.zoom.us/doulio-inc/book-a-demo";
 
 /** Mirrors the doulio.org top nav (the PRO page adds Log in and Book a Demo beside it). */
-export const NAV_LINKS = [
+export type NavChild = {
+  label: string;
+  body: string;
+  href: string;
+  icon: "platform" | "pro" | "trainings" | "upcoming";
+  /** The page the visitor is on. */
+  current?: boolean;
+};
+
+export type NavLink = { label: string; href: string; children?: NavChild[] };
+
+/** This page, as the doulio.org menu links to it. */
+export const PRO_URL = "https://pro.doulio.org";
+
+export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: `${SITE_URL}/` },
   { label: "About Us", href: `${SITE_URL}/aboutus` },
   { label: "Who We Serve", href: `${SITE_URL}/whoweserve` },
-  { label: "Platform", href: `${SITE_URL}/platform` },
+  {
+    label: "Platform",
+    href: `${SITE_URL}/platform`,
+    children: [
+      {
+        label: "Doulio Platform",
+        body: "Software for doula organizations and programs",
+        href: `${SITE_URL}/platform`,
+        icon: "platform",
+      },
+      {
+        label: "Doulio PRO",
+        body: "Your own practice workspace for independent doulas",
+        href: PRO_URL,
+        icon: "pro",
+        current: true,
+      },
+    ],
+  },
   { label: "Become a Doula", href: `${SITE_URL}/becomeadoula` },
-  { label: "Trainings", href: `${SITE_URL}/trainings` },
+  {
+    label: "Trainings",
+    href: `${SITE_URL}/trainings`,
+    children: [
+      {
+        label: "All Trainings",
+        body: "Birth, postpartum and full-spectrum doula trainings",
+        href: `${SITE_URL}/trainings`,
+        icon: "trainings",
+      },
+      {
+        label: "Upcoming Trainings",
+        body: "Dates and locations open for registration",
+        href: `${SITE_URL}/trainings#find-training`,
+        icon: "upcoming",
+      },
+    ],
+  },
   { label: "Find a Doula", href: `${SITE_URL}/directory` },
   { label: "Contact", href: `${SITE_URL}/contact` },
 ];
