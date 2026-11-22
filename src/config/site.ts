@@ -55,7 +55,7 @@ export const NAV_LINKS: NavLink[] = [
       {
         label: "Upcoming Trainings",
         body: "Dates and locations open for registration",
-        href: `${SITE_URL}/trainings#find-training`,
+        href: `${SITE_URL}/currenttrainings`,
         icon: "upcoming",
       },
     ],
