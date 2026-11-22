@@ -20,8 +20,8 @@ npm run build
   growth steps, more features, pricing, plan finder, "Not a doula yet?", FAQ, closing.
 - Look: warm grounds (`warm`, `warm-sand`), deep-teal text (`ink`) and pastel tiles, in
   `tailwind.config.ts`; shared type and button styles in `src/components/styles.ts`. The nav
-  links to this page's sections (`PAGE_LINKS` in `src/config/site.ts`) and always shows
-  "Get Doulio PRO"; the doulio.org links are in the footer.
+  mirrors the doulio.org menu (`NAV_LINKS` in `src/config/site.ts`, plus Log in and
+  Book a Demo) and adds "Get Doulio PRO".
 - Pricing: one card with a monthly/yearly switch (`pricing_period_selected`), and the
   "PRO pays for itself" calculator beside it. The calculator (`src/config/payoff.ts`) only
   divides the amount the visitor enters by the PRO prices; `PAYOFF_DEFAULT_RATE` is where the
